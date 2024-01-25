@@ -1,8 +1,19 @@
-from typing import Callable
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Exercise: Adding type hints
+# Level: Intermediate
+#
+# Add type hints to the following functions. There are a few different ways to do this.
+# One solution is provided in the solution_intermediate.py file.
+# Make sure that you try to solve this exercise on your own before looking at the solution.
+# 
+# If you are using an IDE that does not support type hints, you can skip this exercise.
+# Make sure that you have installed pylance or similar to get type hints in your IDE.
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 class ShoppingCart:
-    def __init__(self, owner: str) -> None:
+    def __init__(self, owner):
         """
         Initializes a shopping cart.
 
@@ -10,9 +21,9 @@ class ShoppingCart:
             owner (str): The owner of the shopping cart.
         """
         self.owner = owner
-        self.items: list[dict[str, int | float]] = []
+        self.items = []
 
-    def add_item(self, id: int, quantity: int, price: float) -> None:
+    def add_item(self, id, quantity, price):
         """
         Adds an item to the shopping cart.
 
@@ -24,7 +35,7 @@ class ShoppingCart:
         item = {"id": id, "quantity": quantity, "price": price}
         self.items.append(item)
 
-    def calculate_total(self) -> float:
+    def calculate_total(self):
         """
         Calculates the total cost of items in the shopping cart.
 
@@ -34,9 +45,7 @@ class ShoppingCart:
         total_cost = sum(item["quantity"] * item["price"] for item in self.items)
         return total_cost
 
-    def filter_items(
-        self, filter_func: Callable[[dict[str, int | float]], bool]
-    ) -> list[dict[str, int | float]]:
+    def filter_items(self, filter_func):
         """
         Filters the items in the shopping cart.
 
@@ -49,9 +58,6 @@ class ShoppingCart:
 
 
 def main() -> None:
-    # Exercise usage
-    # Creating an instance of ShoppingCart, adding items, and calculating the total cost
-
     alice_cart = ShoppingCart("Alice")
 
     alice_cart.add_item(1, 3, 1.50)

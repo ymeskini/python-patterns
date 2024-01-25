@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Callable
 
 
 class ShoppingCart:
@@ -10,22 +10,18 @@ class ShoppingCart:
             owner (str): The owner of the shopping cart.
         """
         self.owner = owner
-        self.items: list[dict[str, Any]] = []
+        self.items: list[dict[str, int | float]] = []
 
-    def add_item(self, item_name: str, quantity: int, price: float) -> None:
+    def add_item(self, id: int, quantity: int, price: float) -> None:
         """
         Adds an item to the shopping cart.
 
         Args:
-            item_name (str): The name of the item.
+            id (int): The name of the item.
             quantity (int): The quantity of the item.
             price (float): The price per unit of the item.
         """
-        item = {
-            'name': item_name,
-            'quantity': quantity,
-            'price': price
-        }
+        item = {"id": id, "quantity": quantity, "price": price}
         self.items.append(item)
 
     def calculate_total(self) -> float:
@@ -35,20 +31,36 @@ class ShoppingCart:
         Returns:
             float: The total cost.
         """
-        total_cost = sum(item['quantity'] * item['price'] for item in self.items)
+        total_cost = sum(item["quantity"] * item["price"] for item in self.items)
         return total_cost
 
-# Exercise usage
-# Creating an instance of ShoppingCart, adding items, and calculating the total cost
+    def filter_items(
+        self, filter_func: Callable[[dict[str, int | float]], bool]
+    ) -> list[dict[str, int | float]]:
+        """
+        Filters the items in the shopping cart.
 
-# Create a shopping cart for "Alice"
-alice_cart = ShoppingCart("Alice")
+        Args:
+            filter_func (function): The function used to filter the items.
+        """
 
-# Add items to the shopping cart
-alice_cart.add_item("Apple", 3, 1.50)
-alice_cart.add_item("Banana", 2, 0.75)
-alice_cart.add_item("Book", 1, 15.99)
+        filtered_items = [item for item in self.items if filter_func(item)]
+        return filtered_items
 
-# Calculate the total cost
-total_cost_alice = alice_cart.calculate_total()
-print(total_cost_alice)
+
+def main() -> None:
+    # Exercise usage
+    # Creating an instance of ShoppingCart, adding items, and calculating the total cost
+
+    alice_cart = ShoppingCart("Alice")
+
+    alice_cart.add_item(1, 3, 1.50)
+    alice_cart.add_item(2, 2, 0.75)
+    alice_cart.add_item(3, 1, 15.99)
+
+    total_cost_alice = alice_cart.calculate_total()
+    print(total_cost_alice)
+
+
+if __name__ == "__main__":
+    main()

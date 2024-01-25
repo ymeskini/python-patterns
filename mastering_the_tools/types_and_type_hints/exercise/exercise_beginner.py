@@ -1,3 +1,13 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Exercise: Adding type hints
+# Level: Beginner
+#
+# Add type hints to the following functions. Make sure that no red squiggles appear in your IDE.
+# If you are using an IDE that does not support type hints, you can skip this exercise.
+# Make sure that you have installed pylance or similar to get type hints in your IDE.
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 def add_book(collection, title, author):
     collection.append({"title": title, "author": author})
 
