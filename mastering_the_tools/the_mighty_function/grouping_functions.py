@@ -72,10 +72,10 @@ def handle_payment_post_processors(
 
 
 def main() -> None:
-    alice = Customer("Alice", 25)
+    customer = Customer("Alice", 25)
     processor = PaymentProcessor()
-    processor.process_payment(100, alice)
-    handle_payment_post_processors(100, alice, PAYMENT_POST_PROCESSORS_TUPLE)
+    processor.process_payment(100, customer)
+    handle_payment_post_processors(100, customer, PAYMENT_POST_PROCESSORS_TUPLE)
 
 
 if __name__ == "__main__":

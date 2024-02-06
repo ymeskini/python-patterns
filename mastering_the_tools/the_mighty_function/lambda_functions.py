@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from functools import partial
 from typing import Callable
 
 
@@ -19,18 +18,6 @@ def send_email_promotion(
         else:
             print(f"{customer.name} is not eligible for promotion")
 
-
-def is_eligible_for_promotion(customer: Customer, cutoff_age: int) -> bool:
-    return customer.age > cutoff_age
-
-
-def is_eligible_closure(cutoff_age: int) -> Callable[[Customer], bool]:
-    def is_eligible(customer: Customer) -> bool:
-        return customer.age > cutoff_age
-
-    return is_eligible
-
-
 def main() -> None:
     customers = [
         Customer("Alice", 25),
@@ -43,10 +30,7 @@ def main() -> None:
         Customer("Holly", 60),
         Customer("Iris", 65),
     ]
-    send_email_promotion(customers, is_eligible_closure(50))
-    is_eligible_partial = partial(is_eligible_for_promotion, cutoff_age=50)
-    send_email_promotion(customers, is_eligible_partial)
-    # send_email_promotion(customers, lambda customer: customer.age > 50)
+    send_email_promotion(customers, lambda customer: customer.age > 50)
 
 
 if __name__ == "__main__":
