@@ -30,19 +30,15 @@ class IoTDevice:
     name: str
     device_type: DeviceType
     status: DeviceStatus
-    config: DeviceConfig = field(default_factory=DeviceConfig)
-    firmware_version: int = field(default=1, init=False)
+    config: DeviceConfig = field(default_factory=DeviceConfig, compare=False)
+    firmware_version: int = field(default=1, init=False, repr=False, compare=False)
 
     def __post_init__(self):
         """Post-initialization to set dynamic defaults."""
-        # For example, automatically activate new devices if they are certain types
         if self.device_type in [DeviceType.LIGHT, DeviceType.SPEAKER]:
             self.status = DeviceStatus.ACTIVE
-        # Initialize a firmware version based on the device type
         if self.device_type == DeviceType.THERMOSTAT:
-            self.firmware_version = (
-                2  # Example of setting a default value conditionally
-            )
+            self.firmware_version = 2
 
     def activate(self):
         if self.status != DeviceStatus.ACTIVE:
@@ -63,39 +59,57 @@ class IoTDevice:
 class SmartHome:
     devices: list[IoTDevice] = field(default_factory=list)
 
-    def add_device(self, device: IoTDevice):
+    def add_device(self, device: IoTDevice) -> IoTDevice:
         """Add a new IoT device to the smart home system."""
         self.devices.append(device)
         print(f"Added {device.name} to the smart home system.")
+        return device
 
-    def list_devices(self):
-        """List all devices in the smart home system."""
-        for device in self.devices:
-            print(f"{device.name} ({device.device_type}) - {device.status.value}")
+    def get_devices(self):
+        return self.devices
 
 
-# Example usage
-smart_home = SmartHome()
+def main() -> None:
+    smart_home = SmartHome()
 
-smart_home.add_device(
-    IoTDevice(
-        name="Living Room Light",
-        device_type=DeviceType.LIGHT,
-        status=DeviceStatus.INACTIVE,
+    light_config = DeviceConfig(configuration={"brightness": "50%"})
+    light_config_2 = DeviceConfig(configuration={"brightness": "20%"})
+
+    light = smart_home.add_device(
+        IoTDevice(
+            name="Living Room Light",
+            device_type=DeviceType.LIGHT,
+            status=DeviceStatus.INACTIVE,
+            config=light_config,
+        )
     )
-)
-smart_home.add_device(
-    IoTDevice(
-        name="Door Security Camera",
-        device_type=DeviceType.SECURITY_CAMERA,
-        status=DeviceStatus.INACTIVE,
+    smart_home.add_device(
+        IoTDevice(
+            name="Door Security Camera",
+            device_type=DeviceType.SECURITY_CAMERA,
+            status=DeviceStatus.INACTIVE,
+        )
     )
-)
-
-smart_home.list_devices()
-
-# Demonstrating post-init customization
-for device in smart_home.devices:
-    print(
-        f"{device.name}: Firmware Version {device.firmware_version}, Status: {device.status.value}"
+    smart_home.add_device(
+        IoTDevice(
+            name="Smart Thermostat",
+            device_type=DeviceType.THERMOSTAT,
+            status=DeviceStatus.INACTIVE,
+        )
     )
+
+    light_2 = smart_home.add_device(
+        IoTDevice(
+            name="Living Room Light",
+            device_type=DeviceType.LIGHT,
+            status=DeviceStatus.INACTIVE,
+            config=light_config_2,
+        )
+    )
+
+
+    print(light == light_2)
+
+
+if __name__ == "__main__":
+    main()
