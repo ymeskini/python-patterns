@@ -23,9 +23,13 @@ class BankAccount:
         return self.balance == other.balance
 
 
-# Example usage:
-account1 = BankAccount("Alice", 1000)
-account2 = BankAccount("Bob", 1500)
+def main() -> None:
+    account1 = BankAccount("Alice", 1000)
+    account2 = BankAccount("Bob", 1500)
 
-print(account1 < account2)  # True, because Alice's balance is less than Bob's
-print(account1 == account2)  # False, because their balances are not equal
+    print(account1 < account2)  # True, because Alice's balance is less than Bob's
+    print(account1 == account2)  # False, because their balances are not equal
+
+
+if __name__ == "__main__":
+    main()

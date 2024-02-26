@@ -49,6 +49,14 @@ class Freelancer:
         return int(self.pay_rate * self.hours_worked)
 
 
+class Printer:
+    def print_pay(self):
+        print(f"{self.name} earned ${(self.compute_pay() / 100):.2f}.")
+
+
+class FreelancerWithPrinter(Freelancer, Printer):
+    pass
+
 @dataclass
 class SalariedEmployeeWithCommission(Commission, SalariedEmployee):
     def compute_pay(self) -> int:
@@ -76,6 +84,9 @@ def main() -> None:
         name="Sarah", id=47832, monthly_salary=500000, contracts_landed=10
     )
     print(f"{sarah.name} earned ${(sarah.compute_pay() / 100):.2f}.")
+
+    arjan = FreelancerWithPrinter(name="Arjan", id=12345, pay_rate=5000, hours_worked=100)
+    arjan.print_pay()
 
 
 if __name__ == "__main__":

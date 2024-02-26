@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import List
 
 
 class ConnectivityStatus(Enum):
@@ -14,7 +13,7 @@ class IoTDevice:
     name: str
     device_type: str
     connectivity: ConnectivityStatus
-    sensors: List[str] = field(default_factory=list)
+    sensors: list[str] = field(default_factory=list)
     location: str = "Unknown"
     firmware_version: int = 1
 
