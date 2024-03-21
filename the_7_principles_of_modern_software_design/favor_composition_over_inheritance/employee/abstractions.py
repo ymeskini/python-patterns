@@ -1,13 +1,9 @@
-"""
-Very advanced Employee management system.
-"""
 from dataclasses import dataclass, field
 from typing import Protocol
 
 
 class PaymentSource(Protocol):
-    def compute_pay(self) -> int:
-        ...
+    def compute_pay(self) -> int: ...
 
 
 @dataclass
