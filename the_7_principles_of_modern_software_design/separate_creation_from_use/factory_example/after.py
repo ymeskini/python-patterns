@@ -86,9 +86,11 @@ class ExporterFactory(Protocol):
 
     def create_video_exporter(self) -> VideoExporter:
         """Returns a new video exporter belonging to this factory."""
+        ...
 
     def create_audio_exporter(self) -> AudioExporter:
         """Returns a new audio exporter belonging to this factory."""
+        ...
 
 
 class FastExporter:
