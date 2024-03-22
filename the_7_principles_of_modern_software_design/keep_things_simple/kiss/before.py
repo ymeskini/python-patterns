@@ -24,6 +24,7 @@ class LineItem:
 class Discount(Protocol):
     def compute_discount(self, price: int) -> int:
         """Computes the discount, given a price."""
+        ...
 
 
 @dataclass

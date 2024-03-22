@@ -13,7 +13,7 @@ def read_int(
     question: str,
     min_value: int = 0,
     max_value: int = sys.maxsize,
-    forbidden_values: list[int] = None,
+    forbidden_values: Optional[list[int]] = None,
 ) -> int:
     value: Optional[int] = None
     if not forbidden_values:
@@ -32,8 +32,7 @@ def read_int(
     return value
 
 
-def main():
-
+def main() -> None:
     vehicle_type = read_choice(
         "What type of vehicle would you like to rent", ["vw", "bmw", "tesla"]
     )

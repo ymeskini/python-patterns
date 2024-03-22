@@ -1,25 +1,26 @@
+VEHICLE_TYPES = ["vw", "bmw", "tesla"]
+VEHICLE_COLORS = ["black", "red", "blue"]
+
+
 def read_vehicle_type() -> str:
-    vehicle_types = ["vw", "bmw", "tesla"]
     vehicle_type = ""
-    while vehicle_type not in vehicle_types:
+    while vehicle_type not in VEHICLE_TYPES:
         vehicle_type = input(
-            f"What type of vehicle would you like to rent ({', '.join(vehicle_types)})? "
+            f"What type of vehicle would you like to rent ({', '.join(VEHICLE_TYPES)})? "
         )
     return vehicle_type
 
 
 def read_vehicle_color() -> str:
-    vehicle_colors = ["black", "red", "blue"]
     vehicle_color = ""
-    while vehicle_color not in vehicle_colors:
+    while vehicle_color not in VEHICLE_COLORS:
         vehicle_color = input(
-            f"What color vehicle would you like to rent ({', '.join(vehicle_colors)})? "
+            f"What color vehicle would you like to rent ({', '.join(VEHICLE_COLORS)})? "
         )
     return vehicle_color
 
 
 def read_rent_days() -> int:
-    """Reads the number of days from the user."""
     days = 0
     while days < 1:
         days_str = input(
@@ -33,7 +34,6 @@ def read_rent_days() -> int:
 
 
 def read_kms_to_drive() -> int:
-    """Reads the number of kilometers to drive from the user."""
     km = 0
     while km < 1:
         km_str = input(
@@ -46,8 +46,7 @@ def read_kms_to_drive() -> int:
     return km
 
 
-def main():
-
+def main() -> None:
     vehicle_type = read_vehicle_type()
 
     vehicle_color = read_vehicle_color()

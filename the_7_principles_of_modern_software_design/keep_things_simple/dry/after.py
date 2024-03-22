@@ -19,8 +19,7 @@ def read_int(question: str, min_value: int = 0):
     return value
 
 
-def main():
-
+def main() -> None:
     vehicle_type = read_choice(
         "What type of vehicle would you like to rent", ["vw", "bmw", "tesla"]
     )
