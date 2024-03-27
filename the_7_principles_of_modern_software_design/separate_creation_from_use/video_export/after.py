@@ -1,7 +1,3 @@
-"""
-Basic video exporting example
-"""
-
 from pathlib import Path
 from typing import Protocol
 
@@ -93,7 +89,7 @@ class ExporterFactory(Protocol):
         ...
 
 
-class FastExporter:
+class LowQualityExporter:
     """Factory aimed at providing a high speed, lower quality export."""
 
     def create_video_exporter(self) -> VideoExporter:
@@ -124,7 +120,7 @@ class MasterQualityExporter:
 
 
 FACTORIES: dict[str, ExporterFactory] = {
-    "low": FastExporter(),
+    "low": LowQualityExporter(),
     "high": HighQualityExporter(),
     "master": MasterQualityExporter(),
 }
@@ -143,12 +139,12 @@ def read_factory() -> ExporterFactory:
             print(f"Unknown output quality option: {export_quality}.")
 
 
-def do_export(fac: ExporterFactory) -> None:
+def do_export(factory: ExporterFactory) -> None:
     """Do a test export using a video and audio exporter."""
 
     # retrieve the exporters
-    video_exporter = fac.create_video_exporter()
-    audio_exporter = fac.create_audio_exporter()
+    video_exporter = factory.create_video_exporter()
+    audio_exporter = factory.create_audio_exporter()
 
     # prepare the export
     video_exporter.prepare_export("placeholder_for_video_data")

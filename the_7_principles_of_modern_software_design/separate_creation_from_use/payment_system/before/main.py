@@ -14,11 +14,16 @@ def read_choice(question: str, choices: list[str]) -> str:
     return choice
 
 
-def main():
+def create_order():
     order = Order()
-    order.add_item("Keyboard", 1, 5000)
-    order.add_item("SSD", 1, 15000)
-    order.add_item("USB cable", 2, 500)
+    order.add_item("Keyboard", 1, 50)
+    order.add_item("SSD", 1, 150)
+    order.add_item("USB cable", 2, 5)
+    return order
+
+
+def main():
+    order = create_order()
 
     print(f"The total price is: ${(order.total_price / 100):.2f}.")
 

@@ -8,16 +8,13 @@ AuthorizeFunction = Callable[[], bool]
 
 class Payable(Protocol):
     @property
-    def total_price(self) -> int:
-        pass
+    def total_price(self) -> int: ...
 
-    def set_payment_status(self, status: PaymentStatus) -> None:
-        pass
+    def set_payment_status(self, status: PaymentStatus) -> None: ...
 
 
 class PaymentProcessor(Protocol):
-    def pay(self, payable: Payable, authorize: AuthorizeFunction) -> None:
-        pass
+    def pay(self, payable: Payable, authorize: AuthorizeFunction) -> None: ...
 
 
 class DebitPaymentProcessor:
