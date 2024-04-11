@@ -25,9 +25,9 @@ class Order:
 
 def main() -> None:
     order = Order()
-    order.add_item("Keyboard", 1, 5000)
-    order.add_item("SSD", 1, 15000)
-    order.add_item("USB cable", 2, 500)
+    order.add_item("Keyboard", 1, 50)
+    order.add_item("SSD", 1, 150)
+    order.add_item("USB cable", 2, 5)
 
     order.pay("debit", "0372846")
 

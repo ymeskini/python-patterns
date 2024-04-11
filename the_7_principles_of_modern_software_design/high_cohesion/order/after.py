@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from enum import Enum, auto
 
 
@@ -8,17 +9,21 @@ class PaymentStatus(Enum):
     PAID = auto()
 
 
+@dataclass
+class ItemOrder:
+    name: str
+    quantity: int
+    price: int
+
+
 class Order:
     def __init__(self):
-        self.items: list[str] = []
-        self.quantities: list[int] = []
-        self.prices: list[int] = []
+        self.items: list[ItemOrder] = []
         self.status: PaymentStatus = PaymentStatus.OPEN
 
     def add_item(self, name: str, quantity: int, price: int) -> None:
-        self.items.append(name)
-        self.quantities.append(quantity)
-        self.prices.append(price)
+        item = ItemOrder(name, quantity, price)
+        self.items.append(item)
 
 
 class PaymentProcessor:
@@ -33,11 +38,11 @@ class PaymentProcessor:
         order.status = PaymentStatus.PAID
 
 
-def main():
+def main() -> None:
     order = Order()
-    order.add_item("Keyboard", 1, 5000)
-    order.add_item("SSD", 1, 15000)
-    order.add_item("USB cable", 2, 500)
+    order.add_item("Keyboard", 1, 50)
+    order.add_item("SSD", 1, 15)
+    order.add_item("USB cable", 2, 5)
 
     processor = PaymentProcessor()
     processor.pay_debit(order, "0372846")
