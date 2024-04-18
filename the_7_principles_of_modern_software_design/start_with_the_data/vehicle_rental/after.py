@@ -24,8 +24,15 @@ class Vehicle:
     price_per_day: int
     reserved: bool
 
-    def total_price(self, days: int, additional_km: int) -> int:
-        return days * self.price_per_day + additional_km * self.price_per_km
+
+@dataclass
+class Customer:
+    id: int
+    name: str
+    address: str
+    postal_code: str
+    city: str
+    email: str
 
 
 class ContractStatus(Enum):
@@ -39,16 +46,17 @@ class ContractStatus(Enum):
 @dataclass
 class RentalContract:
     vehicle: Vehicle
-    customer_id: int
-    customer_name: str
-    customer_address: str
-    customer_postal_code: str
-    customer_city: str
-    customer_email: str
+    customer: Customer
     contract_status: ContractStatus
     pickup_date: datetime
     days: int = 1
     additional_km: int = 0
+
+    def total_price(self) -> int:
+        return (
+            self.days * self.vehicle.price_per_day
+            + self.additional_km * self.vehicle.price_per_km
+        )
 
 
 VEHICLES = {
@@ -62,7 +70,10 @@ VEHICLES = {
 }
 
 
-def main():
+def main() -> None:
+    customer = Customer(
+        12345, "Arjan", "Sesame street 104", "1234", "Amsterdam", "hi@arjancodes.com"
+    )
 
     vehicle_type = read_vehicle_type(list(VEHICLES.keys()))
 
@@ -73,12 +84,7 @@ def main():
     # setup the rental contract
     rental = RentalContract(
         VEHICLES[vehicle_type],
-        12345,
-        "Arjan",
-        "Sesame street 104",
-        "1234",
-        "Amsterdam",
-        "hi@arjancodes.com",
+        customer,
         ContractStatus.ORDERED,
         datetime.now(),
         days,
@@ -89,8 +95,7 @@ def main():
     print(rental)
 
     # calculate the total price
-    total_price = rental.vehicle.total_price(rental.days, rental.additional_km)
-    print(f"Total price: ${total_price/100:.2f}")
+    print(f"Total price: ${rental.total_price()/100:.2f}")
 
 
 if __name__ == "__main__":

@@ -1,13 +1,3 @@
-from enum import Enum, auto
-
-
-class PaymentStatus(Enum):
-    """Payment status"""
-
-    OPEN = auto()
-    PAID = auto()
-
-
 class Order:
     def __init__(self):
         self.items: list[str] = []

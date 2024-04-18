@@ -14,18 +14,6 @@ class FuelType(Enum):
 
 
 @dataclass
-class Vehicle:
-    brand: str
-    model: str
-    color: str
-    fuel_type: FuelType
-    license_plate: str
-    price_per_km: int
-    price_per_day: int
-    reserved: bool
-
-
-@dataclass
 class Customer:
     id: int
     name: str
@@ -44,6 +32,21 @@ class ContractStatus(Enum):
 
 
 @dataclass
+class Vehicle:
+    brand: str
+    model: str
+    color: str
+    fuel_type: FuelType
+    license_plate: str
+    price_per_km: int
+    price_per_day: int
+    reserved: bool
+
+    def total_price(self, days: int, additional_km: int) -> int:
+        return days * self.price_per_day + additional_km * self.price_per_km
+
+
+@dataclass
 class RentalContract:
     vehicle: Vehicle
     customer: Customer
@@ -52,11 +55,8 @@ class RentalContract:
     days: int = 1
     additional_km: int = 0
 
-    def total_price(self):
-        return (
-            self.days * self.vehicle.price_per_day
-            + self.additional_km * self.vehicle.price_per_km
-        )
+    def total_price(self) -> int:
+        return self.vehicle.total_price(self.days, self.additional_km)
 
 
 VEHICLES = {
@@ -70,7 +70,7 @@ VEHICLES = {
 }
 
 
-def main():
+def main() -> None:
     customer = Customer(
         12345, "Arjan", "Sesame street 104", "1234", "Amsterdam", "hi@arjancodes.com"
     )
