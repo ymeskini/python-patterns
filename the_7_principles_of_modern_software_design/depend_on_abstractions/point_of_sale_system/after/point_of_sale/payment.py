@@ -1,23 +1,20 @@
 from dataclasses import dataclass
 from typing import Callable, Protocol
 
-from pos.data import PaymentStatus
+from point_of_sale_system.after.point_of_sale.status import PaymentStatus
 
-AuthorizeFunction = Callable[[], bool]
+type AuthorizeFunction = Callable[[], bool]
 
 
 class Payable(Protocol):
     @property
-    def total_price(self) -> int:
-        ...
+    def total_price(self) -> int: ...
 
-    def set_payment_status(self, status: PaymentStatus) -> None:
-        ...
+    def set_payment_status(self, status: PaymentStatus) -> None: ...
 
 
 class PaymentProcessor(Protocol):
-    def pay(self, payable: Payable, authorize: AuthorizeFunction) -> None:
-        ...
+    def pay(self, payable: Payable, authorize: AuthorizeFunction) -> None: ...
 
 
 class DebitPaymentProcessor:

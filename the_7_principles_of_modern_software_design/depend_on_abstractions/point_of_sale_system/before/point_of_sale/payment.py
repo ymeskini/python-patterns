@@ -1,6 +1,6 @@
-from pos.authorization import authorize_google, authorize_robot, authorize_sms
-from pos.data import PaymentStatus
-from pos.order import Order
+from point_of_sale.authorization import authorize_google, authorize_robot, authorize_sms
+from point_of_sale_system.before.point_of_sale.status import PaymentStatus
+from point_of_sale.order import Order
 
 
 class PaymentProcessor:

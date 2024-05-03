@@ -1,8 +1,8 @@
-from pos.order import Order
-from pos.payment import PaymentProcessor
+from point_of_sale.order import Order
+from point_of_sale.payment import PaymentProcessor
 
 
-def main():
+def main() -> None:
     order = Order()
     order.add_item("Keyboard", 1, 5000)
     order.add_item("SSD", 1, 15000)

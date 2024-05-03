@@ -1,9 +1,9 @@
-from pos.authorization import authorize_google
-from pos.order import Order
-from pos.payment import PaypalPaymentProcessor
+from point_of_sale.authorization import authorize_google
+from point_of_sale.order import Order
+from point_of_sale.payment import PaypalPaymentProcessor
 
 
-def main():
+def main() -> None:
     order = Order()
     order.add_item("Keyboard", 1, 5000)
     order.add_item("SSD", 1, 15000)

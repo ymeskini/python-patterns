@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from pos.data import PaymentStatus
+from point_of_sale_system.before.point_of_sale.status import PaymentStatus
 
 
 @dataclass
