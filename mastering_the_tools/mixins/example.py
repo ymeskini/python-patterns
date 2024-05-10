@@ -7,11 +7,11 @@ from dataclasses import dataclass
 
 @dataclass
 class Commission:
-    commission: int = 10000
+    amount: int = 10000
     contracts_landed: float = 0
 
     def compute_commission(self) -> int:
-        return int(self.commission * self.contracts_landed)
+        return int(self.amount * self.contracts_landed)
 
 
 @dataclass
@@ -57,6 +57,7 @@ class Printer:
 class FreelancerWithPrinter(Freelancer, Printer):
     pass
 
+
 @dataclass
 class SalariedEmployeeWithCommission(Commission, SalariedEmployee):
     def compute_pay(self) -> int:
@@ -76,7 +77,6 @@ class FreelancerWithCommission(Commission, Freelancer):
 
 
 def main() -> None:
-
     henry = HourlyEmployee(name="Henry", id=12346, pay_rate=5000, hours_worked=100)
     print(f"{henry.name} earned ${(henry.compute_pay() / 100):.2f}.")
 
@@ -85,7 +85,9 @@ def main() -> None:
     )
     print(f"{sarah.name} earned ${(sarah.compute_pay() / 100):.2f}.")
 
-    arjan = FreelancerWithPrinter(name="Arjan", id=12345, pay_rate=5000, hours_worked=100)
+    arjan = FreelancerWithPrinter(
+        name="Arjan", id=12345, pay_rate=5000, hours_worked=100
+    )
     arjan.print_pay()
 
 
