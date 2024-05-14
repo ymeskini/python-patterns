@@ -12,7 +12,6 @@ class Account:
             print(f"Deposited: {amount}")
         else:
             print("Deposit amount must be positive")
-        
 
     def withdraw(self, amount: int) -> None:
         if 0 < amount <= self._balance:
@@ -26,8 +25,8 @@ class Account:
 
 
 def pay_service_fee(account: Account) -> None:
-    if account._balance > 0:
-        account._balance -= 100
+    if account.get_balance() > 0:
+        account.withdraw(100)
         print("Manipulated Account: 100 deducted")
 
 
