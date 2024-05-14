@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from enum import Enum
 
+
 class TransactionType(Enum):
     DEPOSIT = "deposit"
     WITHDRAWAL = "withdrawal"
@@ -8,12 +9,15 @@ class TransactionType(Enum):
     COMPLETED = "completed"
 
 
+type Message = dict[str, int | str | TransactionType]
+
+
 @dataclass
 class AccountService:
     queue: "MessageQueue"
 
     def perform_transaction(self, account_id: int, amount: int):
-        message = {
+        message: Message = {
             "account_id": account_id,
             "amount": amount,
             "type": TransactionType.COMPLETED,
@@ -22,7 +26,7 @@ class AccountService:
 
 
 class NotificationService:
-    def receive(self, message: dict[str, int | str | TransactionType]):
+    def receive(self, message: Message):
         if message["type"] == TransactionType.COMPLETED:
             print(
                 f"Notification: Transaction completed for account {message['account_id']}."
@@ -33,7 +37,7 @@ class NotificationService:
 class MessageQueue:
     subscribers: list[NotificationService] = field(default_factory=list)
 
-    def publish(self, message: dict[str, int | str | TransactionType]) -> None:
+    def publish(self, message: Message) -> None:
         for subscriber in self.subscribers:
             subscriber.receive(message)
 
