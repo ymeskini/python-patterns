@@ -19,7 +19,6 @@ def action(status: HTTPStatus) -> str:
 
 
 def main() -> None:
-
     status = HTTPStatus(200)
 
     print(action(status))

@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum
+from enum import StrEnum, auto
 
 
-class TransactionType(Enum):
-    DEPOSIT = "deposit"
-    WITHDRAWAL = "withdrawal"
-    INTEREST = "interest"
+class TransactionType(StrEnum):
+    DEPOSIT = auto()
+    WITHDRAWAL = auto()
+    INTEREST = auto()
 
 
 @dataclass

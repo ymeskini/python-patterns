@@ -1,13 +1,13 @@
 import random
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from enum import StrEnum
+from enum import StrEnum, auto
 
 
 class EnemyType(StrEnum):
-    KNIGHT = "knight"
-    ARCHER = "archer"
-    WIZARD = "wizard"
+    KNIGHT = auto()
+    ARCHER = auto()
+    WIZARD = auto()
 
 
 @dataclass

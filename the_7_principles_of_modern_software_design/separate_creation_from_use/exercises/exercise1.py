@@ -1,10 +1,10 @@
 from dataclasses import dataclass
-from enum import StrEnum
+from enum import StrEnum, auto
 
 
 class Camera(StrEnum):
-    FRONT = "front"
-    BACK = "back"
+    FRONT = auto()
+    BACK = auto()
 
 
 @dataclass

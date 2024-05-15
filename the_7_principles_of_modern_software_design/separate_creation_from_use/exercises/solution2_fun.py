@@ -1,18 +1,18 @@
 import random
 from dataclasses import dataclass
-from enum import StrEnum
+from enum import StrEnum, auto
 
 
 class SpawnType(StrEnum):
-    EASY = "easy"
-    MEDIUM = "medium"
-    HARD = "hard"
+    EASY = auto()
+    MEDIUM = auto()
+    HARD = auto()
 
 
 class EnemyType(StrEnum):
-    KNIGHT = "knight"
-    ARCHER = "archer"
-    WIZARD = "wizard"
+    KNIGHT = auto()
+    ARCHER = auto()
+    WIZARD = auto()
 
 
 @dataclass

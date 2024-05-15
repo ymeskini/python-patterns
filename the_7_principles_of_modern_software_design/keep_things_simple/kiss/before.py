@@ -1,9 +1,9 @@
 from dataclasses import dataclass
-from enum import Enum, auto
+from enum import StrEnum, auto
 from typing import Protocol
 
 
-class PaymentStatus(Enum):
+class PaymentStatus(StrEnum):
     """Payment status"""
 
     OPEN = auto()

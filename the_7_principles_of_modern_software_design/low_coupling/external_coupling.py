@@ -1,10 +1,11 @@
-from enum import Enum
+from enum import StrEnum, auto
 import stripe
 
-class Currency(Enum):
-    USD = "usd"
-    EUR = "eur"
-    GBP = "gbp"
+
+class Currency(StrEnum):
+    USD = auto()
+    EUR = auto()
+    GBP = auto()
 
 
 class PaymentProcessor:

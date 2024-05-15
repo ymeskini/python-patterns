@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum, auto
+from enum import StrEnum, auto
 
 from reader import read_kms_to_drive, read_rent_days, read_vehicle_type
 
 FREE_KMS = 100
 
 
-class FuelType(Enum):
+class FuelType(StrEnum):
     PETROL = auto()
     DIESEL = auto()
     ELECTRIC = auto()
@@ -28,7 +28,7 @@ class Vehicle:
         return days * self.price_per_day + additional_km * self.price_per_km
 
 
-class ContractStatus(Enum):
+class ContractStatus(StrEnum):
     ORDERED = auto()
     PAID = auto()
     PICKED_UP = auto()

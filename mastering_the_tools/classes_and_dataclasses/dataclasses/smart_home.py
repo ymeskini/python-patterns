@@ -1,14 +1,14 @@
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import StrEnum, auto
 
 
-class DeviceStatus(Enum):
-    ACTIVE = "Active"
-    INACTIVE = "Inactive"
-    ERROR = "Error"
+class DeviceStatus(StrEnum):
+    ACTIVE = auto()
+    INACTIVE = auto()
+    ERROR = auto()
 
 
-class DeviceType(Enum):
+class DeviceType(StrEnum):
     LIGHT = "Smart Light"
     THERMOSTAT = "Smart Thermostat"
     SECURITY_CAMERA = "Security Camera"
@@ -106,7 +106,6 @@ def main() -> None:
             config=light_config_2,
         )
     )
-
 
     print(light == light_2)
 

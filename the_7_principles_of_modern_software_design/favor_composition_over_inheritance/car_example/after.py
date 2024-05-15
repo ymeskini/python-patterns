@@ -1,11 +1,10 @@
 from dataclasses import dataclass, field
-from enum import Enum, auto
+from enum import StrEnum, auto
 from typing import Protocol
 
 
 class Pricing(Protocol):
-    def get_total_price(self) -> int:
-        ...
+    def get_total_price(self) -> int: ...
 
 
 class PricePerDay:
@@ -32,13 +31,13 @@ class PricePerKm:
         return self.price_per_km * self.nr_kms
 
 
-class FuelType(Enum):
+class FuelType(StrEnum):
     PETROL = auto()
     DIESEL = auto()
     ELECTRIC = auto()
 
 
-class TruckCabStyle(Enum):
+class TruckCabStyle(StrEnum):
     REGULAR = auto()
     EXTENDED = auto()
     CREW = auto()

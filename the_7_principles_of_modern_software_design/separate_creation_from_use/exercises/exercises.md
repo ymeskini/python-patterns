@@ -4,8 +4,8 @@ Suppose you have the following program that uses a device's camera to scan a QR 
 
 ```python
 class Camera(StrEnum):
-    FRONT = "front"
-    BACK = "back"
+    FRONT = auto()  
+    BACK = auto()
 
 
 @dataclass
@@ -48,9 +48,9 @@ Suppose you're building a game that involves creating different types of enemies
 from dataclasses import dataclass
 
 class EnemyType(StrEnum):
-    KNIGHT = "knight"
-    ARCHER = "archer"
-    WIZARD = "wizard"
+    KNIGHT = auto()
+    ARCHER = auto()
+    WIZARD = auto()
 
 
 @dataclass

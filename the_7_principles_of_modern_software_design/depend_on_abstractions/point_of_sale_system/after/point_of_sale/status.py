@@ -1,6 +1,6 @@
-from enum import Enum, auto
+from enum import StrEnum, auto
 
 
-class PaymentStatus(Enum):
+class PaymentStatus(StrEnum):
     OPEN = auto()
     PAID = auto()

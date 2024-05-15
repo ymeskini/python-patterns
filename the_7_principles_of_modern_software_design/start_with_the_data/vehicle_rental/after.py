@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum, auto
+from enum import StrEnum, auto
 
 from reader import read_kms_to_drive, read_rent_days, read_vehicle_type
 
 FREE_KMS = 100
 
 
-class FuelType(Enum):
+class FuelType(StrEnum):
     PETROL = auto()
     DIESEL = auto()
     ELECTRIC = auto()
@@ -35,7 +35,7 @@ class Customer:
     email: str
 
 
-class ContractStatus(Enum):
+class ContractStatus(StrEnum):
     ORDERED = auto()
     PAID = auto()
     PICKED_UP = auto()

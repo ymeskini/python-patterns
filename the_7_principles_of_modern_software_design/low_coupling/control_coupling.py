@@ -1,11 +1,11 @@
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum, auto
 
 
-class Operation(Enum):
-    DEPOSIT = "deposit"
-    WITHDRAW = "withdraw"
-    INTEREST = "interest"
+class Operation(StrEnum):
+    DEPOSIT = auto()
+    WITHDRAW = auto()
+    INTEREST = auto()
 
 
 @dataclass

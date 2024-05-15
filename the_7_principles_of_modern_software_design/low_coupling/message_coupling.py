@@ -1,12 +1,12 @@
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import StrEnum, auto
 
 
-class TransactionType(Enum):
-    DEPOSIT = "deposit"
-    WITHDRAWAL = "withdrawal"
-    TRANSFER = "transfer"
-    COMPLETED = "completed"
+class TransactionType(StrEnum):
+    DEPOSIT = auto()
+    WITHDRAWAL = auto()
+    TRANSFER = auto()
+    COMPLETED = auto()
 
 
 type Message = dict[str, int | str | TransactionType]

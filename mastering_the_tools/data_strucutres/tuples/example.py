@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import StrEnum
 from typing import Union
 
 # Grouping several values
@@ -6,13 +6,13 @@ coordinates = (10.0, 20.5)
 print(coordinates)
 
 
-class Month(Enum):
+class Month(StrEnum):
     JANUARY = "January"
     FEBRUARY = "February"
 
 
 def get_birthday() -> tuple[Month, int]:
-    # Example function returning a tuple of month (enum) and year (integer)
+    # Example function returning a tuple of month (StrEnum) and year (integer)
     return (Month.JANUARY, 1990)
 
 

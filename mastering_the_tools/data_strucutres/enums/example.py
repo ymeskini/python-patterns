@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class HTTPStatus(Enum):
+class HTTPStatus(IntEnum):
     OK = 200
     CREATED = 201
     ACCEPTED = 202
@@ -12,7 +12,6 @@ class HTTPStatus(Enum):
     NOT_FOUND = 404
     INTERNAL_SERVER_ERROR = 500
     NOT_IMPLEMENTED = 501
-
 
 
 for status in HTTPStatus:
@@ -48,6 +47,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
-

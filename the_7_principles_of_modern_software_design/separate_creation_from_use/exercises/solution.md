@@ -67,9 +67,9 @@ def hard_spawn() -> Enemy:
     # code for hard spawn
 
 class SpawnType(StrEnum):
-    EASY = "easy"
-    MEDIUM = "medium"
-    HARD = "hard"
+    EASY = auto()
+    MEDIUM = auto()
+    HARD = auto()
 
 SPAWN_FUNCTIONS = {
     SpawnType.EASY: easy_spawn,

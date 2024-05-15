@@ -1,10 +1,10 @@
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import StrEnum, auto
 
 
-class ConnectivityStatus(Enum):
-    ONLINE = "Online"
-    OFFLINE = "Offline"
+class ConnectivityStatus(StrEnum):
+    ONLINE = auto()
+    OFFLINE = auto()
     LIMITED = "Limited Connectivity"
 
 
@@ -31,7 +31,6 @@ class IoTDevice:
 
 
 def main() -> None:
-
     # Example usage
     iot_device = IoTDevice(
         name="Smart Thermostat",

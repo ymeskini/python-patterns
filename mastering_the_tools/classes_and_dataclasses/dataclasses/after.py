@@ -1,7 +1,7 @@
 import random
 import string
 from dataclasses import dataclass, field
-from enum import Enum, auto
+from enum import StrEnum, auto
 
 
 def generate_vehicle_license() -> str:
@@ -13,7 +13,7 @@ def generate_vehicle_license() -> str:
     return f"{letter_part_1}-{digit_part}-{letter_part_2}"
 
 
-class Accessory(Enum):
+class Accessory(StrEnum):
     AIRCO = auto()
     CRUISECONTROL = auto()
     NAVIGATION = auto()
@@ -22,7 +22,7 @@ class Accessory(Enum):
     MINIBAR = auto()
 
 
-class FuelType(Enum):
+class FuelType(StrEnum):
     PETROL = auto()
     DIESEL = auto()
     ELECTRIC = auto()

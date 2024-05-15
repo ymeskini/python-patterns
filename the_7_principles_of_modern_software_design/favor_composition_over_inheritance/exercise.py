@@ -1,14 +1,14 @@
 from dataclasses import dataclass
-from enum import Enum, auto
+from enum import StrEnum, auto
 
 
-class FuelType(Enum):
+class FuelType(StrEnum):
     PETROL = auto()
     DIESEL = auto()
     ELECTRIC = auto()
 
 
-class TruckCabStyle(Enum):
+class TruckCabStyle(StrEnum):
     REGULAR = auto()
     EXTENDED = auto()
     CREW = auto()

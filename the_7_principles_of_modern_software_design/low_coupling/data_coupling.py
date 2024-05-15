@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import StrEnum, auto
 import logging
 
 logging.basicConfig(
@@ -6,9 +6,9 @@ logging.basicConfig(
 )
 
 
-class TransactionType(Enum):
-    DEPOSIT = "deposit"
-    WITHDRAWAL = "withdrawal"
+class TransactionType(StrEnum):
+    DEPOSIT = auto()
+    WITHDRAWAL = auto()
 
 
 class TransactionService:
