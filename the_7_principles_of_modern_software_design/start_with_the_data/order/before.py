@@ -1,9 +1,19 @@
+from enum import StrEnum, auto
+
+
+class PaymentStatus(StrEnum):
+    """Payment status"""
+
+    OPEN = auto()
+    PAID = auto()
+
+
 class Order:
     def __init__(self):
         self.items: list[str] = []
         self.quantities: list[int] = []
         self.prices: list[int] = []
-        self.status: str = "open"
+        self.status: PaymentStatus = PaymentStatus.OPEN
 
     def add_item(self, name: str, quantity: int, price: int) -> None:
         self.items.append(name)
