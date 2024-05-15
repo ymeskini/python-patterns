@@ -1,5 +1,5 @@
 from point_of_sale.order import Order
-from point_of_sale.payment import PaymentProcessor
+from point_of_sale.payment import Authorizer, PaymentProcessor
 
 
 def main() -> None:
@@ -9,7 +9,7 @@ def main() -> None:
     order.add_item("USB cable", 2, 500)
 
     print(f"The total price is: ${(order.total_price / 100):.2f}.")
-    processor = PaymentProcessor("sms")
+    processor = PaymentProcessor(Authorizer.SMS)
     processor.pay_credit(order, "123456")
 
 

@@ -1,13 +1,20 @@
+from enum import StrEnum
 from point_of_sale.authorization import authorize_google, authorize_robot, authorize_sms
 from point_of_sale_system.before.point_of_sale.status import PaymentStatus
 from point_of_sale.order import Order
 
 
+class Authorizer(StrEnum):
+    GOOGLE = "google"
+    SMS = "sms"
+    ROBOT = "robot"
+
+
 class PaymentProcessor:
-    def __init__(self, authorizer_type: str):
-        if authorizer_type == "google":
+    def __init__(self, authorizer_type: Authorizer):
+        if authorizer_type == Authorizer.GOOGLE:
             self.authorize = authorize_google
-        elif authorizer_type == "sms":
+        elif authorizer_type == Authorizer.SMS:
             self.authorize = authorize_sms
         else:
             self.authorize = authorize_robot
