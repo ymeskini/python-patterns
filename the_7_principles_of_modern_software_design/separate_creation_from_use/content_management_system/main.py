@@ -34,7 +34,6 @@ def main() -> None:
 
     content_renderer = ContentRenderer(user_auth_service, database_access)
 
-    # Example use
     content_renderer.render_page("admin", "admin123", "101")
 
 

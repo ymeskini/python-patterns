@@ -1,16 +1,5 @@
-"""
-Basic video exporting example
-"""
-
 from pathlib import Path
 from typing import Protocol
-
-
-def read_choice(question: str, choices: list[str]) -> str:
-    choice = ""
-    while choice not in choices:
-        choice = input(f"{question} ({', '.join(choices)})? ")
-    return choice
 
 
 class VideoExporter(Protocol):
@@ -83,8 +72,14 @@ class WAVAudioExporter:
         print(f"Exporting audio data in WAV format to {folder}.")
 
 
-def main() -> None:
+def read_choice(question: str, choices: list[str]) -> str:
+    choice = ""
+    while choice not in choices:
+        choice = input(f"{question} ({', '.join(choices)})? ")
+    return choice
 
+
+def main() -> None:
     # read the desired export quality
     export_quality = read_choice(
         "What output quality do you want", ["low", "high", "master"]
