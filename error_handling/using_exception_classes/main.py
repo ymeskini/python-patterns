@@ -5,22 +5,6 @@ from typing import Any
 from pydantic import BaseModel
 
 
-@dataclass
-class SQLiteConnectionManager:
-    file_path: str
-    conn: sqlite3.Connection | None = None
-
-    def __enter__(self):
-        self.conn = sqlite3.connect(self.file_path)
-        self.conn.row_factory = sqlite3.Row
-        return self.conn.cursor()
-
-    def __exit__(self, type: str, value: Any, traceback: Any):
-        print("Closing the connection")
-        if self.conn:
-            self.conn.close()
-
-
 class AccessError(Exception):
     pass
 
@@ -49,12 +33,14 @@ class Blog(BaseModel):
 
 
 def fetch_blog(blog_id: str) -> Blog | None:
-    with SQLiteConnectionManager(file_path="./after/application.db") as cursor:
-        cursor.execute("SELECT * FROM blogs where id=?", [blog_id])
-        result: tuple[Any] | None = cursor.fetchone()
+    conn = sqlite3.connect("./using_exception_classes/application.db")
+    conn.row_factory = sqlite3.Row
 
-        if result is None:
-            raise NotFoundError(blog_id)
+    try:
+        curr = conn.cursor()
+
+        curr.execute("SELECT * FROM blogs where id=?", [blog_id])
+        result: tuple[Any] = curr.fetchone()
 
         blog_attrs = dict(result)
 
@@ -62,6 +48,12 @@ def fetch_blog(blog_id: str) -> Blog | None:
 
         if not blog.public:
             raise NotAuthorizedError(blog_id)
+
+        conn.close()
+
+    except AccessError as _e:
+        print("Access denied")
+        return None
 
     return blog
 

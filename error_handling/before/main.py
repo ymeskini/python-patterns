@@ -1,42 +1,32 @@
 import sqlite3
-from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
+from pydantic import BaseModel
 
 
-@dataclass
-class Blog:
+class Blog(BaseModel):
     id: str
-    published: datetime
+    date: datetime
     title: str
     content: str
     public: bool
 
 
-def blog_lst_to_json(item: list[Any]) -> Blog:
-    return Blog(
-        id=item[0],
-        published=item[1],
-        title=item[2],
-        content=item[3],
-        public=bool(item[4]),
-    )
-    # return Blog(*item)
+def fetch_blog(blog_id: str) -> Blog | None:
+    conn = sqlite3.connect("./before/application.db")
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
 
+    cursor.execute("SELECT * FROM blogs where id=?", [blog_id])
+    result: tuple[Any] = cursor.fetchone()
 
-def fetch_blog(blog_id: str):
-    # connect to the database
-    con = sqlite3.connect("application.db")
-    cur = con.cursor()
+    blog_attrs = dict(result)
 
-    # execute the query and fetch the data
-    cur.execute("SELECT * FROM blogs where id=?", [blog_id])
-    result = cur.fetchone()
+    blog = Blog(**blog_attrs)
 
-    # close the database
-    con.close()
+    conn.close()
 
-    return blog_lst_to_json(result)
+    return blog
 
 
 def main() -> None:
