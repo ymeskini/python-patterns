@@ -42,7 +42,7 @@ def go_to_bed(devices: list[Switchable]):
         device.off()
 
 
-def main():
+def main() -> None:
     light_bedroom = Light("bedroom")
     light_living = Light("living room")
     heating = Heating("bedroom")

@@ -13,9 +13,9 @@ CONVERSION_RATES = {
 
 
 def convert_to_currency(
-    value: int, currency: str, conversion_rates: dict[str, int]
+    value: int, currency: str, conversion_rates: dict[str, float]
 ) -> int:
-    return value * conversion_rates[currency]
+    return int(value * conversion_rates[currency])
 
 
 def multi_convert_currencies(
@@ -26,7 +26,7 @@ def multi_convert_currencies(
     return {currency: conversion_functions[currency](value) for currency in currencies}
 
 
-def main():
+def main() -> None:
     dollar_amount = 50_00
     print(f"Converting ${dollar_amount/100:.2f} USD to EUR:")
     eur_amount = convert_to_currency(dollar_amount, "EUR", CONVERSION_RATES)

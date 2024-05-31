@@ -2,12 +2,10 @@ from typing import Callable
 global_variable = 0
 
 def G() -> None:
-
     global global_variable
     global_variable += 1
 
 def F(func: Callable[[], None]) -> None:
-
     func()
 
 def main() -> None:

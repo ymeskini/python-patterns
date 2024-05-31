@@ -9,7 +9,6 @@ def F(func: Callable[[int, int], int]) -> None:
 
 
 def main() -> None:
-
     F(G)
 
 

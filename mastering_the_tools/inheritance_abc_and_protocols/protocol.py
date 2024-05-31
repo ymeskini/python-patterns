@@ -50,7 +50,7 @@ def renew_license(license_holder: LicenseHolder):
     license_holder.renew_license(datetime.now())
 
 
-def main():
+def main() -> None:
     car = Car("Ford")
     truck = Truck("DAF")
     reserve_now(car)

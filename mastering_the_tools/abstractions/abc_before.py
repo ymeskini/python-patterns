@@ -33,7 +33,7 @@ def go_to_bed(heating: Heating, light: Light):
     light.off()
 
 
-def main():
+def main() -> None:
     light = Light("bedroom")
     heating = Heating("bedroom")
     wake_up(heating, light)

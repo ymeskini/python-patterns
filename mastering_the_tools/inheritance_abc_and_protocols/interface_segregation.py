@@ -63,7 +63,7 @@ def reserve_now(vehicle: Rentable):
 def book_renewal(vehicle: Renewable):
     vehicle.renew_license(datetime.now())
 
-def main():
+def main() -> None:
     car = Car("Ford")
     truck = Truck("DAF")
     reserve_now(car)
