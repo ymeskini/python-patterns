@@ -1,7 +1,8 @@
 from enum import StrEnum
-from point_of_sale.authorization import authorize_google, authorize_robot, authorize_sms
-from point_of_sale_system.before.point_of_sale.status import PaymentStatus
-from point_of_sale.order import Order
+
+from .authorization import authorize_google, authorize_robot, authorize_sms
+from .order import Order
+from .status import PaymentStatus
 
 
 class Authorizer(StrEnum):

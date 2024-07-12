@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Callable, Protocol
 
-from point_of_sale_system.after.point_of_sale.status import PaymentStatus
+from .status import PaymentStatus
 
 type AuthorizeFunction = Callable[[], bool]
 
