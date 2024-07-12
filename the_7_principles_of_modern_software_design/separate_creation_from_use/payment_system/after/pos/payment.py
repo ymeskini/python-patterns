@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import Callable, Protocol
 
-from pos.data import PaymentStatus
+from .data import PaymentStatus
 
-AuthorizeFunction = Callable[[], bool]
+type AuthorizeFunction = Callable[[], bool]
 
 
 class Payable(Protocol):

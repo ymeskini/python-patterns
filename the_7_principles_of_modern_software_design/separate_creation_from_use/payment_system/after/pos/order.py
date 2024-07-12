@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from pos.data import PaymentStatus
+from .data import PaymentStatus
 
 
 @dataclass
