@@ -1,8 +1,11 @@
 from dataclasses import dataclass
+from logging import Logger
 import sqlite3
 from datetime import datetime
 from typing import Any
 from pydantic import BaseModel
+
+logger = Logger(__name__)
 
 
 class AccessError(Exception):
@@ -52,7 +55,7 @@ def fetch_blog(blog_id: str) -> Blog | None:
         conn.close()
 
     except AccessError as _e:
-        print("Access denied")
+        logger.error("Access denied")
         return None
 
     return blog

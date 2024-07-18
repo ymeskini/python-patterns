@@ -53,8 +53,8 @@ def main() -> None:
     try:
         user = get_current_user(token)
         print(f"User: {user}")
-    except CredentialsException as e:
-        print(f"Error: {e}")
+    except CredentialsException as _e:
+        logger.error("Error occurred while getting the user")
 
 
 if __name__ == "__main__":

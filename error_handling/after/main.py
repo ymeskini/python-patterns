@@ -3,6 +3,9 @@ import sqlite3
 from datetime import datetime
 from typing import Any
 from pydantic import BaseModel
+from logging import Logger
+
+logger = Logger(__name__)
 
 
 @dataclass
@@ -16,7 +19,7 @@ class SQLiteConnectionManager:
         return self.conn.cursor()
 
     def __exit__(self, type: str, value: Any, traceback: Any):
-        print("Closing the connection")
+        logger.info("Closing the connection")
         if self.conn:
             self.conn.close()
 
