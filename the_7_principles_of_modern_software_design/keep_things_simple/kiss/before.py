@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import StrEnum, auto
 from typing import Protocol
 
@@ -43,11 +43,11 @@ class VariableDiscount:
         return int(self.discount_percentage * price)
 
 
+@dataclass
 class Order:
-    def __init__(self):
-        self.items: list[LineItem] = []
-        self.status: PaymentStatus = PaymentStatus.OPEN
-        self.discounts: list[Discount] = []
+    items: list[LineItem] = field(default_factory=list)
+    status: PaymentStatus = PaymentStatus.OPEN
+    discounts: list[Discount] = field(default_factory=list)
 
     def add_item(self, name: str, quantity: int, price: int) -> None:
         self.items.append(LineItem(name, quantity, price))

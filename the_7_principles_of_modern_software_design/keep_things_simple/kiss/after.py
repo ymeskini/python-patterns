@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import StrEnum, auto
 
 
@@ -20,12 +20,12 @@ class LineItem:
         return self.quantity * self.price
 
 
+@dataclass
 class Order:
-    def __init__(self):
-        self.items: list[LineItem] = []
-        self.status: PaymentStatus = PaymentStatus.OPEN
-        self.fixed_discount: int = 0
-        self.variable_discount: float = 0.0
+    items: list[LineItem] = field(default_factory=list)
+    status: PaymentStatus = PaymentStatus.OPEN
+    fixed_discount: int = 0
+    variable_discount: float = 0.0
 
     def add_item(self, item: LineItem) -> None:
         self.items.append(item)
