@@ -10,7 +10,7 @@ The course aims to equip participants with the tools and mindset needed to eleva
   - [Modules](#modules)
     - [Module 1: Mastering The Tools](#module-1-mastering-the-tools)
     - [Module 2: The 7 Principles Of Modern Software Design](#module-2-the-7-principles-of-modern-software-design)
-    - [Module 3: Being A Responsible Developer](#module-3-being-a-responsible-developer)
+    - [Module 3: Writing Complex Software](#module-3-writing-complex-software)
   - [Prerequisites](#prerequisites)
   - [Do you want to help?](#do-you-want-to-help)
 
@@ -38,15 +38,14 @@ Though you may already know some of these things, I'd like to cover them in the 
 What are the consequences of choosing a particular data structure or inheritance hierarchy in terms of the software design?
 
 **Topics Covered**
-
-- Code enviroment
-- Setup software projects
-- Types and type hints
+- Type hints
+- Data Types
 - Data structures
-- Dataclasses
+- Classes and Dataclasses
 - Inheritance
   - Abstract classes
   - Protocols
+- Mixins
 
 ### Module 2: The 7 Principles Of Modern Software Design
 
@@ -62,15 +61,16 @@ The second part is all about growing a particular mindset towards software devel
 - Separate Creation From Use
 - Keep Things Simple
 
-### Module 3: Being A Responsible Developer
+### Module 3: Writing Complex Software
+In the last module is about the practical aspects of writing more complex and maintainable software. Building upon the foundational principles covered in the previous modules, this module will guide you through the intricacies of structuring and organizing your code effectively. The goal is to give you a idea of how to create a robust project scaffolding, ensuring your codebase is scalable and easy to navigate. 
 
-Basics in Python: types and type hints, data structures, classes and dataclasses, and inheritance including abstract base classes and protocols. Though you may already know some of these things, I'd like to cover them in the course and specifically talk about them from a design perspective: what are the consequences of choosing a particular data structure or inheritance hierarchy in terms of the software design?
+Additionally, you will learn best practices for organizing code in a way that promotes clarity and ease of maintenance, making it easier to manage and extend your projects. Finally, we’ll cover advanced error handling strategies to help you anticipate and gracefully manage unexpected issues, ensuring your software remains resilient and reliable.
 
 **Topics Covered**
 
-- Mixins
-- Dealing With Errors
-- Setting Up A Complex Software Project
+- Project Scaffolding
+- Organizing Code
+- Error Handling
 
 ## Prerequisites
 - Beginner knowledge of Python
