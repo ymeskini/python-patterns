@@ -2,7 +2,7 @@
 
 ![Authors](https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/themes/2149113237/settings_images/4adb13d-824c-454-a5c-72b2c6f06e1_Arjan_Codes_-_FInal_Files.png)
 
-[![License](https://img.shields.io/badge/license-arjancodes-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-ArjanCodes-blue.svg)](LICENSE)
 
 The course aims to equip participants with the tools and mindset needed to elevate their software development skills. The content covers fundamental concepts, practical application, and modern principles of software design, emphasizing real-life examples written in Python.
 
