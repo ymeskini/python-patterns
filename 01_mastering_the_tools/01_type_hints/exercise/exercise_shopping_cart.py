@@ -1,17 +1,3 @@
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# Exercise: Adding type hints
-# Level: Intermediate
-#
-# Add type hints to the following functions. There are a few different ways to do this.
-# One solution is provided in the solution_intermediate.py file.
-# Make sure that you try to solve this exercise on your own before looking at the solution.
-# 
-# If you are using an IDE that does not support type hints, you can skip this exercise.
-# Make sure that you have installed pylance or similar to get type hints in your IDE.
-#
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-
 class ShoppingCart:
     def __init__(self, owner):
         """
