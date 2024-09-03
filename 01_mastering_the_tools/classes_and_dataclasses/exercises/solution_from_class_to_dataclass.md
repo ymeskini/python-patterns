@@ -1,26 +1,3 @@
-# 1. From class to dataclass
-
-Convert the following classes into dataclasses such that the initializers that the dataclass generates have the same behavior as the regular class:
-
-```python
-class A:
-    def __init__(self) -> None:
-        self._length = 0
-
-class B:
-    def __init__(self, x: int, y: str = "hello", l: list[int] | None = None) -> None:
-        self.x = x
-        self.y = y
-        self.l = [] if not l else l
-
-class C:
-    def __init__(self, a: int = 3) -> None:
-        self.a = a
-        self.b = a + 3
-```
-
-## Solution
-
 Class `A` has a single attribute `_length` that is not set in the initializer. If you convert this to a data class, you need to use the `field` function and indicate that the `_length` field shouldn't be in the initializer. Secondly, you need to supply the default argument to the `field` function as well so that `_length` is initially 0. This is what that looks like (assuming `_length` is an integer):
 
 ```python
@@ -61,7 +38,7 @@ class C:
     b: int = field(init=False)
 
     def __post_init__(self) -> None:
-        self.b = a + 3
+        self.b = self.a + 3
 ```
 
 As you can see, dataclasses are not always shorter to write than regular classes (the dataclass version of `C` adds an extra line with regards to the regular version). But then again, shortness shouldn't be the only decision factor in whether you should use a dataclass or a regular class, because of the many other benefits that dataclasses offer such as having a nicely printable version of the object and being able to see at a glance what the instance variables are of a dataclass since they're all defined at the top.
@@ -77,12 +54,6 @@ class B:
 ```
 
 # 2. Let's sell some phones
-
-The mobile phone company _PhonyPhones_ needs to create a system for managing their customers' phone plans and they need to get better insight into the data that they need to store. Because their CEO knows a bit of Python, he asks you to write a few dataclasses representing the data structure of their application. In short, they have customers (name, address, email address), phones (brand, model, price, serial number) and plans (which refer to a customer, a phone, a start date, the total number of months in the contract, a monthly price, and whether the phone is included in the contract).
-
-Write the dataclasses that can represent this data. You may take some freedom in how things like addresses etc. are represented.
-
-## Solution
 
 Here's a possible solution:
 
@@ -126,8 +97,8 @@ class Address:
 @dataclass
 class Customer:
     name: str
-    addresses: list[Address] = field(default_factory=list)
     email :str
+    addresses: list[Address] = field(default_factory=list)
 ```
 
 The nice thing about this change is that it now allows customers to have multiple addresses, for example a customer can now have a billing address that's different from the delivery address.
