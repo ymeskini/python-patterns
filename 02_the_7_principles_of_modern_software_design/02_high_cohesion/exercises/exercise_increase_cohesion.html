@@ -1,0 +1,99 @@
+<p>Here is an excerpt from a Python script that processes a CSV file:</p>
+<div
+  style="
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  "
+>
+  <span style="color: #f8f8f2">Record</span> =
+  <span style="color: #a6e22e">dict</span>[<span style="color: #a6e22e"
+    >str</span
+  >, <span style="color: #a6e22e">Any</span>]<br /><br /><span
+    style="color: #66d9ef"
+    >def</span
+  >
+  <span style="color: #a6e22e">main</span>() -&gt;
+  <span style="color: #66d9ef">None</span>:<br />&nbsp;&nbsp;<span
+    style="color: #66d9ef"
+    >with</span
+  >
+  <span style="color: #f8f8f2">open</span>(<span style="color: #e6db74"
+    >"data.csv"</span
+  >) <span style="color: #66d9ef">as</span>
+  <span style="color: #f8f8f2">f</span>:<br />&nbsp;&nbsp;&nbsp;&nbsp;<span
+    style="color: #f8f8f2"
+    >reader</span
+  >
+  = <span style="color: #f8f8f2">csv.DictReader</span>(<span
+    style="color: #f8f8f2"
+    >f</span
+  >)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">data</span>:
+  <span style="color: #a6e22e">list</span>[<span style="color: #f8f8f2"
+    >Record</span
+  >] = <span style="color: #f8f8f2">list</span>(<span style="color: #f8f8f2"
+    >reader</span
+  >)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >processed_data</span
+  >: <span style="color: #a6e22e">list</span>[<span style="color: #f8f8f2"
+    >Record</span
+  >] = []<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #66d9ef">for</span>
+  <span style="color: #f8f8f2">row</span>
+  <span style="color: #66d9ef">in</span>
+  <span style="color: #f8f8f2">data</span
+  >:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >row_copy</span
+  >
+  =
+  <span style="color: #f8f8f2">row.copy</span
+  >()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #66d9ef"
+    >if</span
+  >
+  <span style="color: #f8f8f2">row_copy["status"]</span> ==
+  <span style="color: #e6db74">"active"</span
+  >:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+    style="color: #f8f8f2"
+    >row_copy["is_active"]</span
+  >
+  = <span style="color: #66d9ef">True</span
+  ><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #66d9ef"
+    >else</span
+  >:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+    style="color: #f8f8f2"
+    >row_copy["is_active"]</span
+  >
+  = <span style="color: #66d9ef">False</span
+  ><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >processed_data.append</span
+  >(<span style="color: #f8f8f2">row_copy</span
+  >)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #66d9ef">with</span>
+  <span style="color: #f8f8f2">open</span>(<span style="color: #e6db74"
+    >"processed.csv"</span
+  >, <span style="color: #e6db74">"w"</span>)
+  <span style="color: #66d9ef">as</span>
+  <span style="color: #f8f8f2">f</span
+  >:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >writer</span
+  >
+  = <span style="color: #f8f8f2">csv.DictWriter</span>(<span
+    style="color: #f8f8f2"
+    >f</span
+  >, <span style="color: #f8f8f2">fieldnames</span>=[<span
+    style="color: #e6db74"
+    >"name"</span
+  >, <span style="color: #e6db74">"status"</span>,
+  <span style="color: #e6db74">"is_active"</span
+  >])<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >writer.writeheader</span
+  >()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >writer.writerows</span
+  >(<span style="color: #f8f8f2">processed_data</span>)
+</div>
+<p>
+  Why is this code not very cohesive? How can you refactor it to increase
+  cohesion?
+</p>
