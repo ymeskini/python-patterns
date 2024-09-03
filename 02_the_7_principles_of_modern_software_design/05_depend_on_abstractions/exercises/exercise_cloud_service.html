@@ -1,0 +1,62 @@
+<p>
+  Suppose you have the following class that is a helper class for managing
+  access to a Google Cloud environment:
+</p>
+<div
+  style="
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  "
+>
+  <span style="color: #66d9ef">@dataclass</span><br /><span
+    style="color: #66d9ef"
+    >class</span
+  >
+  <span style="color: #a6e22e">CloudService</span>:<br />&nbsp;&nbsp;<span
+    style="color: #f8f8f2"
+    >auth_provider</span
+  >: <span style="color: #a6e22e">GoogleCredentials</span
+  ><br />&nbsp;&nbsp;<span style="color: #f8f8f2">service</span>:
+  <span style="color: #a6e22e">GoogleServiceProvider</span
+  ><br />&nbsp;&nbsp;<span style="color: #f8f8f2">storage_manager</span>:
+  <span style="color: #a6e22e">GoogleStorage</span><br /><br />&nbsp;&nbsp;<span
+    style="color: #66d9ef"
+    >def</span
+  >
+  <span style="color: #a6e22e">connect</span>(<span style="color: #f8f8f2"
+    >self</span
+  >) -&gt;
+  <span style="color: #66d9ef">None</span>:<br />&nbsp;&nbsp;&nbsp;&nbsp;<span
+    style="color: #f8f8f2"
+    >print</span
+  >(<span style="color: #e6db74">"Connecting to the cloud service."</span
+  >)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >credentials</span
+  >
+  =
+  <span style="color: #f8f8f2">self.auth_provider.retrieve_credentials</span
+  >()<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >self.service.connect</span
+  >(<span style="color: #f8f8f2">credentials</span
+  >)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">context</span> =
+  <span style="color: #f8f8f2">self.service.get_context</span
+  >()<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >self.storage_manager.initialize</span
+  >(<span style="color: #f8f8f2">context</span
+  >)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">print</span
+  >(<span style="color: #e6db74">"Cloud service connected."</span>)
+</div>
+<p>
+  As you can see, the class directly depends on Google-specific classes:
+  <code>GoogleCredentials</code>, <code>GoogleService</code>, and
+  <code>GoogleStorage</code>. You want to remove this direct dependency.
+  However, you can't change the original classes provided by Google. In fact,
+  you don't even have access to the source code of those classes. How do you
+  solve this? Refactor your code to remove the direct dependency.
+</p>
+<h1>&nbsp;</h1>

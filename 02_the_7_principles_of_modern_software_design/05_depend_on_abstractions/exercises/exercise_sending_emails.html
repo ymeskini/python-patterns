@@ -1,0 +1,43 @@
+<p>Consider the following function that sends an email:</p>
+<div
+  style="
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  "
+>
+  <span style="color: #66d9ef">def</span>
+  <span style="color: #a6e22e">send_email</span>(<br />
+  &nbsp;&nbsp;<span style="color: #f8f8f2">message</span>:
+  <span style="color: #a6e22e">str</span>,
+  <span style="color: #f8f8f2">to_address</span>:
+  <span style="color: #a6e22e">str</span>,
+  <span style="color: #f8f8f2">from_address</span>:
+  <span style="color: #a6e22e">str</span> =
+  <span style="color: #f8f8f2">DEFAULT_EMAIL</span><br />
+  ) -&gt; <span style="color: #66d9ef">None</span>:<br />
+  &nbsp;&nbsp;<span style="color: #f8f8f2">server</span> =
+  <span style="color: #f8f8f2">SMTP</span>()<br />
+  &nbsp;&nbsp;<span style="color: #f8f8f2">server.connect</span>(<span
+    style="color: #f8f8f2"
+    >HOST</span
+  >, <span style="color: #f8f8f2">PORT</span>)<br />
+  &nbsp;&nbsp;<span style="color: #f8f8f2">server.login</span>(<span
+    style="color: #f8f8f2"
+    >LOGIN</span
+  >, <span style="color: #f8f8f2">PASSWORD</span>)<br />
+  &nbsp;&nbsp;<span style="color: #f8f8f2">server.sendmail</span>(<span
+    style="color: #f8f8f2"
+    >from_address</span
+  >, <span style="color: #f8f8f2">to_address</span>,
+  <span style="color: #f8f8f2">message</span>)<br />
+  &nbsp;&nbsp;<span style="color: #f8f8f2">server.quit</span>()
+</div>
+<p>
+  What external package does this function depend on? Refactor the code and
+  remove the dependency.
+</p>
