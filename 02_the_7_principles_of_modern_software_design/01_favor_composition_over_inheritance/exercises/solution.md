@@ -1,5 +1,3 @@
-# Elasticsearch
-
 a) I've created two solutions, each using a slightly different approach. Let's first talk about the one in `solution_oo.py`.
 
 If you want to use composition instead of inheritance in this case, it means that we need to create a class that _contains_ the `CloudProvider` object. I've modified the `ACCloud` class and turned it into a dataclass that contains both the `CloudProvider` object and the bucket name. `ACCloud` still contains the `find_files` method and accesses the `CloudProvider` object's `filter_by_query` function.
