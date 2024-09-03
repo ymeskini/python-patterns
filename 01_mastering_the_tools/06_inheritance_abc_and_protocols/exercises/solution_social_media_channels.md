@@ -1,40 +1,3 @@
-# 1. Social media channels
-
-You just landed a job at "SocialOverlord", a company developing a SaaS product allowing you to write and schedule posts to a variety of social networks.
-
-The whole backend is written in Python (yay!), but unfortunately, the person you're replacing didn't know classes exist (ehrm...) and so they used tuples to represent all the data in the system (not so yay...). Here's a code example:
-
-```python
-# each social channel has a type
-# and the current number of followers
-SocialChannel = tuple[str, int]
-
-# each post has a message and the timestamp when it should be posted
-Post = tuple[str, int]
-
-def post_a_message(channel: SocialChannel, message: str) -> None:
-    type, _ = channel
-    if type == "youtube":
-        post_to_youtube(channel, message)
-    elif type == "facebook":
-        post_to_facebook(channel, message)
-    elif type == "twitter":
-        post_to_twitter(channel, message)
-
-def process_schedule(posts: list[Post], channels: list[SocialChannel]) -> None:
-    for post in posts:
-        message, timestamp = post
-        for channel in channels:
-            if timestamp <= time():
-                post_a_message(channel, message)
-```
-
-## a) From tuples to classes
-
-Refactor this code so that it uses classes instead of tuples to represent social channels and posts. As a starting point, use the code download for this exercise.
-
-### Solution
-
 The first step is to replace the two tuples by classes. For example, you could do the following (using dataclasses):
 
 ```python
@@ -82,57 +45,12 @@ Implement a new version of the code that uses _abstraction_ to solve the problem
 
 Bonus challenge: is there a solution that doesn't need abstraction?
 
-### Solution
-
 A nice way to solve the problem is by reconsidering whether a separate `post_a_message` function actually makes sense. In `exercise_1_v3.py`, I refactored the code so that it now uses an abstract class that defines a `post_message` method that then in turn call the lower level message posting function (in a real-life example, posting messages will probably be a lot more involved than simply calling a function though). Due to polymorphism, the correct message posting method is called automatically, so we no longer need the if-statement from the previous version.
 
 A much shorter solution is given in `exercise_1_v4.py`. Here I'm not using abstraction at all and I moved to a mostly functional solution. I am defining a few simple types like `MessageSender` that serve as a kind of 'abstraction' in that they define the interface between the different areas of the program. The way I solved the need for the if-statement in this version is by putting references to the function in a dictionary, so you can simply map social channel type to the appropriate function in the `process_schedule` function.
 
 What did your solution look like? Did you rely on classes or functions? How was it different from my solution?
 
-# 2. Html Trees
-
-Consider the following classes:
-
-```python
-@dataclass
-class Div:
-    parent: Div | None = None
-    x: int = 0
-    y: int = 0
-
-    def compute_screen_position(self) -> tuple[int, int]:
-        if not self.parent:
-            return (self.x, self.y)
-        parent_x, parent_y = self.parent.compute_screen_position()
-        return (parent_x + self.x, parent_y + self.y)
-
-@dataclass
-class Button:
-    parent: Div
-    x: int
-    y: int
-
-    def click(self) -> None:
-        print("Click!")
-
-@dataclass
-class Span:
-    parent: Div
-    x: int
-    y: int
-    text: str
-```
-
-Of course, HTML has many more different elements. In the elements above, there is some duplication (in particular, the parent, x and y instance variables). Also, we'd like to be able to compute the position of any type of element, not just divs and be able to combine different elements in a tree.
-
-## a) Abstraction
-
-Refactor the class hierarchy by introducing an abstract base class `HTMLElement` that divs, buttons, and spans are subclasses of. Minimize code duplication and make sure that each element is able to compute its position on the screen.
-
-In order to get started more quickly, download the code for this exercise above (but don't look at the solution yet!).
-
-### Solution
 
 What we need to do is create an `HTMLElement` abstract class. This class is basically what the `Div` class was before, but made abstract:
 
@@ -169,8 +87,6 @@ There's a couple of interesting things to note:
 ## b) Protocols
 
 Can you use a _protocol_ just as easily instead of an abstract base class? What would need to be changed so you can use a protocol class instead of an abstract base class?
-
-### Solution
 
 The issue that you're going to run into is that with protocols you rely on structural typing (duck typing) instead of inheritance. That means that if you have an `HTMLElement` protocol and you define properties and methods inside of it, the other classes won't be able to use that if they don't inherit from `HTMLElement` anymore. There are a couple of ways to fix this:
 

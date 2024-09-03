@@ -38,7 +38,7 @@ def main() -> None:
     root = Div(None, 25, 25)
     button = Button(root, 0, 0)
     sub_div = Div(root, 100, 100)
-    span = Span(sub_div, 40, 40, "Hello")
+    _span = Span(sub_div, 40, 40, "Hello")
     button.click()
     print(sub_div.compute_screen_position())
 
