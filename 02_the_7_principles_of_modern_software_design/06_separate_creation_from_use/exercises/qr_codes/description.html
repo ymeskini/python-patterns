@@ -1,0 +1,102 @@
+<p>
+  Consider&nbsp;the following program that uses a device's camera to scan a QR
+  code and then navigates to the URL represented by the QR code on the device's
+  browser:
+</p>
+<div
+  style="
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  "
+>
+  <span style="color: #66d9ef">class</span>
+  <span style="color: #a6e22e">Camera</span>(<span style="color: #f8f8f2"
+    >StrEnum</span
+  >):<br />
+  &nbsp;&nbsp;<span style="color: #f8f8f2">FRONT</span> =
+  <span style="color: #e6db74">"front"</span><br />
+  &nbsp;&nbsp;<span style="color: #f8f8f2">BACK</span> =
+  <span style="color: #e6db74">"back"</span><br /><br /><span
+    style="color: #66d9ef"
+    >@dataclass</span
+  ><br /><span style="color: #66d9ef">class</span>
+  <span style="color: #a6e22e">QRScanner</span>:<br />
+  &nbsp;<span style="color: #f8f8f2">camera</span>:
+  <span style="color: #f8f8f2">Camera</span> =
+  <span style="color: #f8f8f2">Camera.FRONT</span><br /><br />
+  &nbsp;<span style="color: #66d9ef">def</span>
+  <span style="color: #a6e22e">choose_camera</span>(<span style="color: #f8f8f2"
+    >self</span
+  >, <span style="color: #f8f8f2">camera</span>:
+  <span style="color: #f8f8f2">Camera</span>) -&gt;
+  <span style="color: #66d9ef">None</span>:<br />
+  &nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">print</span>(<span
+    style="color: #e6db74"
+    >f</span
+  ><span style="color: #e6db74">"Choosing camera {camera.value}."</span>)<br />
+  &nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">self.camera</span> =
+  <span style="color: #f8f8f2">camera</span><br /><br />
+  &nbsp;<span style="color: #66d9ef">def</span>
+  <span style="color: #a6e22e">scan</span>(<span style="color: #f8f8f2"
+    >self</span
+  >) -&gt; <span style="color: #a6e22e">str</span>:<br />
+  &nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">print</span>(<span
+    style="color: #e6db74"
+    >f</span
+  ><span style="color: #e6db74"
+    >"Scanning QR code with {self.camera.value} camera."</span
+  >)<br />
+  &nbsp;&nbsp;&nbsp;<span style="color: #66d9ef">return</span>
+  <span style="color: #e6db74">"https://www.arjancodes.com"</span
+  ><br /><br /><span style="color: #66d9ef">class</span>
+  <span style="color: #a6e22e">Browser</span>:<br />&nbsp;&nbsp;<span
+    style="color: #66d9ef"
+    >def</span
+  >
+  <span style="color: #a6e22e">open</span>(<span style="color: #f8f8f2"
+    >self</span
+  >, <span style="color: #f8f8f2">url</span>:
+  <span style="color: #a6e22e">str</span>) -&gt;
+  <span style="color: #66d9ef">None</span>:<br />&nbsp;&nbsp;&nbsp;&nbsp;<span
+    style="color: #f8f8f2"
+    >print</span
+  >(<span style="color: #e6db74">f</span
+  ><span style="color: #e6db74">"Opening {url} in the browser."</span
+  >)<br /><br />&nbsp;&nbsp;<span style="color: #66d9ef">def</span>
+  <span style="color: #a6e22e">open_from_qr_code</span>(<span
+    style="color: #f8f8f2"
+    >self</span
+  >) -&gt;
+  <span style="color: #66d9ef">None</span>:<br />&nbsp;&nbsp;&nbsp;&nbsp;<span
+    style="color: #f8f8f2"
+    >qr</span
+  >
+  =
+  <span style="color: #f8f8f2">QRScanner</span
+  >()<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >qr.choose_camera</span
+  >(<span style="color: #f8f8f2">Camera.BACK</span
+  >)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">url</span> =
+  <span style="color: #f8f8f2">qr.scan</span
+  >()<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">self.open</span
+  >(<span style="color: #f8f8f2">url</span>)<br /><br /><span
+    style="color: #66d9ef"
+    >def</span
+  >
+  <span style="color: #a6e22e">main</span>() -&gt;
+  <span style="color: #66d9ef">None</span>:<br />&nbsp;&nbsp;<span
+    style="color: #f8f8f2"
+    >print</span
+  >(<span style="color: #e6db74">"Navigating to website on device."</span
+  >)<br />&nbsp;&nbsp;<span style="color: #f8f8f2">browser</span> =
+  <span style="color: #f8f8f2">Browser</span>()<br />&nbsp;&nbsp;<span
+    style="color: #f8f8f2"
+    >browser.open_from_qr_code</span
+  >()
+</div>
+<p>Apply the "Separate Creation From Use" principle to refactor this code.</p>

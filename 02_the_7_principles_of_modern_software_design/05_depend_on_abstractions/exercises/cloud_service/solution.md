@@ -1,0 +1,5 @@
+As you can see, the `CloudService` class directly depends on Google-specific classes: `GoogleCredentials`, `GoogleServiceProvider`, and `GoogleStorage`. You want to remove this direct dependency. However, you can't change the original classes provided by Google. In fact, you don't even have access to the source code of those classes. How do you solve this? Refactor your code to remove the direct dependency.
+
+Protocol classes are really useful in this case, because they allow you to define the interface of what you expect in your class, method, or function. Python's structural typing system then takes care of making sure that the types match without there being an explicit relationship.
+
+Making this change here is relatively straightforward. You can see a solution in `solution_1.py`. I've created Protocol classes for each of the three Google-specific classes and used those in the `CloudService` class instead. You can now remove the Google-specific import.

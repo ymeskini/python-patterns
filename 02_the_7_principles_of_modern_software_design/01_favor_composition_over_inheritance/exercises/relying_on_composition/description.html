@@ -1,0 +1,124 @@
+<p>
+  In this exercise, you'll practice with composition and abstraction to improve
+  code that is used by a famous YouTuber to manage backing up his video files.
+</p>
+<p>
+  It relies on a (fake) <code>cloudengine</code> package that has a
+  <code>CloudProvider</code> abstract base class. This class expects a region
+  (this refers to the data center that is used), an authentication object used
+  to access the cloud resource, as well as a secure flag (it doesn't really
+  matter what this actually is, but set it to True for more security!).
+</p>
+<p>
+  The code below is part of a script that this famous YouTuber uses to search
+  through video backups, which are stored in a bucket (= file storage location)
+  in the cloud:
+</p>
+<div
+  style="
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  "
+>
+  <span style="color: #66d9ef">class</span>
+  <span style="color: #a6e22e">ACCloud</span>(<span style="color: #f8f8f2"
+    >CloudProvider</span
+  >):<br />
+  &nbsp;&nbsp;<span style="color: #66d9ef">def</span>
+  <span style="color: #a6e22e">__init__</span>(<span style="color: #f8f8f2"
+    >self</span
+  >, <span style="color: #f8f8f2">bucket_name</span>:
+  <span style="color: #a6e22e">str</span>,
+  <span style="color: #f8f8f2">region</span>:
+  <span style="color: #a6e22e">str</span>) -&gt;
+  <span style="color: #66d9ef">None</span>:<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">authentication</span> =
+  <span style="color: #f8f8f2">GoogleAuth</span>(<span style="color: #e6db74"
+    >"service_key.json"</span
+  >)<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #66d9ef">super</span>().<span
+    style="color: #a6e22e"
+    >__init__</span
+  >(<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">region</span
+  >=<span style="color: #f8f8f2">region</span>,<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >http_auth</span
+  >=<span style="color: #f8f8f2">authentication</span>,<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">secure</span
+  >=<span style="color: #f8f8f2">True</span>,<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;)<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">self.bucket_name</span> =
+  <span style="color: #f8f8f2">bucket_name</span><br /><br />
+  &nbsp;&nbsp;<span style="color: #66d9ef">def</span>
+  <span style="color: #a6e22e">find_files</span>(<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">self</span>,<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">query</span>:
+  <span style="color: #a6e22e">str</span>,<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">max_result</span>:
+  <span style="color: #a6e22e">int</span><br />
+  &nbsp;&nbsp;) -&gt; <span style="color: #a6e22e">list</span>[<span
+    style="color: #a6e22e"
+    >str</span
+  >]:<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">response</span> =
+  <span style="color: #f8f8f2">self.filter_by_query</span>(<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">bucket</span
+  >=<span style="color: #f8f8f2">self.bucket_name</span>,<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">query</span
+  >=<span style="color: #f8f8f2">query</span>,<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">max</span
+  >=<span style="color: #f8f8f2">max_result</span><br />
+  &nbsp;&nbsp;&nbsp;&nbsp;)<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #66d9ef">return</span>
+  <span style="color: #f8f8f2">response[</span
+  ><span style="color: #e6db74">"result"</span>][<span style="color: #e6db74"
+    >"data"</span
+  >][<span style="color: #f8f8f2">0</span>]<br /><br /><span
+    style="color: #66d9ef"
+    >class</span
+  >
+  <span style="color: #a6e22e">VideoStorage</span>(<span style="color: #f8f8f2"
+    >ACCloud</span
+  >):<br />&nbsp;&nbsp;<span style="color: #66d9ef">def</span>
+  <span style="color: #a6e22e">__init__</span>(<span style="color: #f8f8f2"
+    >self</span
+  >) -&gt;
+  <span style="color: #66d9ef">None</span>:<br />&nbsp;&nbsp;&nbsp;&nbsp;<span
+    style="color: #66d9ef"
+    >super</span
+  >().<span style="color: #a6e22e">__init__</span
+  >(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >bucket_name</span
+  >=<span style="color: #e6db74">"video-backup.arjancodes.com"</span
+  >,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
+    >region</span
+  >=<span style="color: #e6db74">"eu-west-1c"</span>,<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;)
+</div>
+<p>
+  The code extends the capability of <code>CloudProvider</code>&nbsp;by using
+  two inheritance layers: one layer to add a convenience method for finding
+  files, and one layer to create a default video storage access point&nbsp;for
+  <code>ACCloud</code>.
+</p>
+<p>
+  The problem with all these layers of inheritance is that the code becomes hard
+  to read. Also, there are simpler solutions than inheritance if you just want
+  to define a few default arguments. This is the case with the
+  <code>VideoStorage</code> class, which does only that and nothing else. In
+  many cases, composition offers a simpler solution than inheritance.
+</p>
+<p>
+  a) Refactor this code so that it no longer uses inheritance, but relies on
+  composition instead.
+</p>
+<p>
+  b) Refactor the code once more so that <code>find_files</code>&nbsp;is no
+  longer dependent on the <code>cloudengine</code>&nbsp;package.
+</p>
