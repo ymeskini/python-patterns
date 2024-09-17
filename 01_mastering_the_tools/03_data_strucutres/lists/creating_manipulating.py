@@ -14,6 +14,23 @@ def main() -> None:
     # Slicing
     first_three = numbers[:3]
     print(f"Fifth three element: {first_three}")
+
+    # Slicing with a step
+    every_other = numbers[::2]
+    print(f"Every other element: {every_other}")
+
+    # Reversing a list
+    reversed_list = numbers[::-1]
+    print(f"Reversed List: {reversed_list}")
+
+    # Slicing from to and to a position
+    middle_three = numbers[1:4]
+    print(f"Middle three elements: {middle_three}")
+
+    # Accessing the last element
+    last_element = numbers[-1]
+    print(f"Last element: {last_element}")
+
     # Discussing memory management
     # Python lists automatically resize as items are added or removed
     numbers.append(6)
