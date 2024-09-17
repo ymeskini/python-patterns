@@ -1,13 +1,7 @@
 <p>
-  In this exercise, you'll practice with composition and abstraction to improve
-  code that is used by a famous YouTuber to manage backing up his video files.
-</p>
-<p>
-  It relies on a (fake) <code>cloudengine</code> package that has a
-  <code>CloudProvider</code> abstract base class. This class expects a region
-  (this refers to the data center that is used), an authentication object used
-  to access the cloud resource, as well as a secure flag (it doesn't really
-  matter what this actually is, but set it to True for more security!).
+  In this exercise, you'll work with composition and abstraction. The goal of
+  the exercise is to improve code that is used by a famous YouTuber to manage
+  backing up his video files.
 </p>
 <p>
   The code below is part of a script that this famous YouTuber uses to search
@@ -102,17 +96,20 @@
   &nbsp;&nbsp;&nbsp;&nbsp;)
 </div>
 <p>
-  The code extends the capability of <code>CloudProvider</code>&nbsp;by using
-  two inheritance layers: one layer to add a convenience method for finding
-  files, and one layer to create a default video storage access point&nbsp;for
-  <code>ACCloud</code>.
+  The main (fake) dependency is the&nbsp;<code>cloudengine</code> package which
+  contains the&nbsp;<code>CloudProvider</code> abstract base class.
 </p>
 <p>
-  The problem with all these layers of inheritance is that the code becomes hard
-  to read. Also, there are simpler solutions than inheritance if you just want
-  to define a few default arguments. This is the case with the
-  <code>VideoStorage</code> class, which does only that and nothing else. In
-  many cases, composition offers a simpler solution than inheritance.
+  The classes in this example are nested, in other words multiple levels of
+  inheritance.&nbsp;<code><span>VideoStorage</span></code
+  ><span
+    >. inherits from&nbsp;ACCloud which in turn
+    inherits&nbsp;CloudProvider.</span
+  >
+</p>
+<p>
+  The problem with these layers of inheritance is that the code becomes hard to
+  read.
 </p>
 <p>
   a) Refactor this code so that it no longer uses inheritance, but relies on
