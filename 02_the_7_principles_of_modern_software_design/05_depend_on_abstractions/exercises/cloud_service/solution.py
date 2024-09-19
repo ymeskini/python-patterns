@@ -1,23 +1,25 @@
 from dataclasses import dataclass
 from typing import Protocol
 
+from google_service import (
+    GoogleCredentials,
+    GoogleServiceProvider,
+    GoogleStorage,
+)
+
 
 class CloudCredentials(Protocol):
-    def retrieve_credentials(self) -> str:
-        ...
+    def retrieve_credentials(self) -> str: ...
 
 
 class CloudServiceProvider(Protocol):
-    def connect(self, credentials: str) -> None:
-        ...
+    def connect(self, credentials: str) -> None: ...
 
-    def get_context(self) -> str:
-        ...
+    def get_context(self) -> str: ...
 
 
 class CloudStorage(Protocol):
-    def initialize(self, context: str) -> None:
-        ...
+    def initialize(self, context: str) -> None: ...
 
 
 @dataclass
@@ -33,3 +35,15 @@ class CloudService:
         context = self.service.get_context()
         self.storage_manager.initialize(context)
         print("Cloud service connected.")
+
+
+def main() -> None:
+    credentials = GoogleCredentials()
+    service = GoogleServiceProvider()
+    storage = GoogleStorage()
+    cloud_service = CloudService(credentials, service, storage)
+    cloud_service.connect()
+
+
+if __name__ == "__main__":
+    main()
