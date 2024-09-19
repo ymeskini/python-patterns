@@ -32,3 +32,5 @@ def process_schedule(posts: list[Post], channels: list[SocialChannel]) -> None:
 ## a) From tuples to classes
 
 Refactor this code so that it uses classes instead of tuples to represent social channels and posts. As a starting point, use the code download for this exercise.
+
+Compatible Python Versions: 3.9+

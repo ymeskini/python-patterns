@@ -17,3 +17,5 @@ class CloudService:
 ```
 
 As you can see, the class directly depends on Google-specific classes: `GoogleCredentials`, `GoogleService`, and `GoogleStorage`. You want to remove this direct dependency. However, you can't change the original classes provided by Google. In fact, you don't even have access to the source code of those classes. How do you solve this? Refactor your code to remove the direct dependency.
+
+Compatible Python Versions: 3.8+

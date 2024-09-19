@@ -26,3 +26,5 @@ def main() -> None:
 ```
 
 Why is this code not very cohesive? How can you refactor it to increase cohesion?
+
+Compatible Python Versions: 3.9+

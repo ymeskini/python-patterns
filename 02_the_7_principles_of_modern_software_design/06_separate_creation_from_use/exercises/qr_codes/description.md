@@ -37,3 +37,5 @@ def main() -> None:
 ```
 
 Apply the "Separate Creation From Use" principle to refactor this code.
+
+Compatible Python Versions: 3.11+

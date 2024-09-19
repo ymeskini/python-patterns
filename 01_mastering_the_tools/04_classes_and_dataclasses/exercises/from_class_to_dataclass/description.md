@@ -16,3 +16,5 @@ class C:
         self.a = a
         self.b = a + 3
 ```
+
+Compatible Python Versions: 3.10+

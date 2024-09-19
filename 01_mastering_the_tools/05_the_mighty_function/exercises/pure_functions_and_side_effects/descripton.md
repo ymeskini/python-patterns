@@ -29,3 +29,5 @@ if __name__ == "__main__":
 a) Both `generate_id` and `weekday` are not pure functions. Why not? How would you write tests for these functions?
 
 b) Rewrite both functions so that they are pure functions. Observe what happens to the `main` function after making this change. Are the functions now easier to test? Are they easier to use as well?
+
+Compatible Python Versions: 3.6+

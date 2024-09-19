@@ -12,3 +12,5 @@ def send_email(
 ```
 
 What external package does this function depend on? Refactor the code and remove the dependency.
+
+Compatible Python Versions: 3.8+

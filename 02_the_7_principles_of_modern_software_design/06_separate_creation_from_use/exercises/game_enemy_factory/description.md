@@ -26,3 +26,5 @@ Your game also has "spawn points" that spawn new enemies. There are three types 
 a) Create a Python application that uses the Abstract Factory pattern to create enemies based on the type of spawn point (easy, medium, or hard). The application should print the attributes of the enemies that are created.
 
 b) What would be a more functional way to create enemies based on the type of spawn point? Update your application to use this approach.
+
+Compatible Python Versions: 3.11+

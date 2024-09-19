@@ -25,3 +25,5 @@ We want to add the capability to the software to reset the laptop to the factory
 a) Extend the program with this capability relying on object-oriented programming.
 
 b) Write another version of the same program, but this time, don't extend the class with new capabilities, use a separate function instead. How would you describe the differences between the two versions?
+
+Compatible Python Versions: 3.7+
