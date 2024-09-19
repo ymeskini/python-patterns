@@ -9,22 +9,22 @@ Post = tuple[str, int]
 
 
 def post_to_youtube(channel: SocialChannel, message: str) -> None:
-    type, followers = channel
+    type, _followers = channel
     print(f"{type} channel: {message}")
 
 
 def post_to_facebook(channel: SocialChannel, message: str) -> None:
-    type, followers = channel
+    type, _followers = channel
     print(f"{type} channel: {message}")
 
 
 def post_to_twitter(channel: SocialChannel, message: str) -> None:
-    type, followers = channel
+    type, _followers = channel
     print(f"{type} channel: {message}")
 
 
 def post_a_message(channel: SocialChannel, message: str) -> None:
-    type, followers = channel
+    type, _followers = channel
     if type == "youtube":
         post_to_youtube(channel, message)
     elif type == "facebook":
