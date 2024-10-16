@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import os
 import sqlite3
 from datetime import datetime
 from typing import Any
@@ -7,6 +8,9 @@ from logging import Logger
 
 logger = Logger(__name__)
 
+
+CURRENT_DIRECTORY = os.path.dirname(__file__)
+DATABASE_FILEPATH = os.path.join(CURRENT_DIRECTORY, './application.db')
 
 @dataclass
 class SQLiteConnectionManager:
@@ -52,7 +56,7 @@ class Blog(BaseModel):
 
 
 def fetch_blog(blog_id: str) -> Blog | None:
-    with SQLiteConnectionManager(file_path="./after/application.db") as cursor:
+    with SQLiteConnectionManager(file_path=DATABASE_FILEPATH) as cursor:
         cursor.execute("SELECT * FROM blogs where id=?", [blog_id])
         result: tuple[Any] | None = cursor.fetchone()
 

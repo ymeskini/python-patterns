@@ -1,7 +1,12 @@
 import sqlite3
+import os
+
 from datetime import datetime
 from typing import Any
 from pydantic import BaseModel
+
+CURRENT_DIRECTORY = os.path.dirname(__file__)
+DATABASE_FILEPATH = os.path.join(CURRENT_DIRECTORY, './application.db')
 
 
 class Blog(BaseModel):
@@ -13,7 +18,7 @@ class Blog(BaseModel):
 
 
 def fetch_blog(blog_id: str) -> Blog | None:
-    conn = sqlite3.connect("./before/application.db")
+    conn = sqlite3.connect(DATABASE_FILEPATH)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
