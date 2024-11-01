@@ -10,7 +10,7 @@ class Customer:
 @dataclass
 class Account:
     customer: Customer
-    balance: int = 0 
+    balance: int = 0
 
     def get_customer_email(self):
         return self.customer.email

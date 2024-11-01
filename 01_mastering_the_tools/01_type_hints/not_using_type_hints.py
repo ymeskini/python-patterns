@@ -17,5 +17,6 @@ def main() -> None:
     print(f"Total plans: {total_plans}")
     print(f"Total products: {total_products}")
 
+
 if __name__ == "__main__":
     main()

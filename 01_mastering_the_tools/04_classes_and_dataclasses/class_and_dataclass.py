@@ -34,7 +34,6 @@ def main() -> None:
     person_dataclass1 = PersonDataclass("Alice", 30)
     person_dataclass2 = PersonDataclass("Bob", 25)
 
-    
     # Check if instances are equal
     print(person1 == person2)  # Output: False
     print(person_dataclass1 == person_dataclass2)  # Output: False

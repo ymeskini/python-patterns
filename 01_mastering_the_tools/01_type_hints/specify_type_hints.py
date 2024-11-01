@@ -3,6 +3,7 @@ name: str = "Arjan"
 
 ages: list[int] = [23, 43, 35]
 
+
 def verify_password(submitted_password: str, stored_hash: str) -> bool:
     return True
 

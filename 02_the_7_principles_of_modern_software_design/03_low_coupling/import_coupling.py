@@ -2,9 +2,9 @@ from dataclasses import dataclass, field
 import numpy as np
 from datetime import datetime
 
+
 @dataclass
 class Account:
-
     owner: str
     transactions: list[tuple[datetime, str, int]] = field(default_factory=list)
     _balance: int = 0
@@ -20,13 +20,13 @@ class Account:
 
     def deposit(self, amount: int) -> None:
         if amount > 0:
-            self.add_transaction('Deposit', amount)
+            self.add_transaction("Deposit", amount)
         else:
             print("Deposit amount must be positive")
 
     def withdraw(self, amount: int) -> None:
         if 0 < amount <= self.calculate_balance():
-            self.add_transaction('Withdrawal', -amount)
+            self.add_transaction("Withdrawal", -amount)
         else:
             print("Invalid withdrawal amount")
 

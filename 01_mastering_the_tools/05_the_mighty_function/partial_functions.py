@@ -23,6 +23,7 @@ def send_email_promotion(
 def is_eligible_for_promotion(customer: Customer, cutoff_age: int) -> bool:
     return customer.age > cutoff_age
 
+
 def main() -> None:
     customers = [
         Customer("Alice", 25),

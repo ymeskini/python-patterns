@@ -12,6 +12,7 @@ class Account:
     customer: Customer
     balance: int = 0
 
+
 class AccountManager:
     def email_customer(self, account: Account):
         customer_email = account.customer.email

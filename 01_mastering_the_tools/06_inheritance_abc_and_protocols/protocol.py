@@ -5,13 +5,11 @@ from typing import Protocol
 
 
 class Rentable(Protocol):
-    def reserve(self, start_date: datetime, days: int):
-        ...
+    def reserve(self, start_date: datetime, days: int): ...
 
 
 class LicenseHolder(Protocol):
-    def renew_license(self, new_license_date: datetime):
-        ...
+    def renew_license(self, new_license_date: datetime): ...
 
 
 @dataclass

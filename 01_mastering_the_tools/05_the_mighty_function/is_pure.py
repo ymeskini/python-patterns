@@ -1,5 +1,6 @@
 from typing import Callable
 
+
 def G(a: int, b: int) -> int:
     return a + b
 

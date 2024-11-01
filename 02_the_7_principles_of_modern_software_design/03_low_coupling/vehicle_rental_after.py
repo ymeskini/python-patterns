@@ -62,7 +62,6 @@ def read_kms_to_drive() -> int:
 
 
 def main():
-
     vehicle_type = read_vehicle_type(list(VEHICLE_DATA.keys()))
 
     days = read_rent_days()

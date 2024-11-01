@@ -1,5 +1,5 @@
 # Strings can be surrounded by either single or double quotation marks
-single_quoted_string = 'Hello, World!'
+single_quoted_string = "Hello, World!"
 double_quoted_string = "Hello, World!"
 
 # Strings using single or double quotes interchangeably
@@ -25,11 +25,11 @@ print("Concatenated string:", concatenated_string)
 search_result = "World" in single_quoted_string
 print("Searching for 'World':", search_result)
 
-#Reassigning string
-single_quoted_string = 'Goodbye, World!'
+# Reassigning string
+single_quoted_string = "Goodbye, World!"
 print("Reassigned string:", single_quoted_string)
 
 # Python treats single characters and strings of characters as the same type
-single_character = 'A'
+single_character = "A"
 print("Type of single_character:", type(single_character))
 print("Type of single_quoted_string:", type(single_quoted_string))

@@ -6,7 +6,7 @@ from typing import Any
 from pydantic import BaseModel
 
 CURRENT_DIRECTORY = os.path.dirname(__file__)
-DATABASE_FILEPATH = os.path.join(CURRENT_DIRECTORY, './application.db')
+DATABASE_FILEPATH = os.path.join(CURRENT_DIRECTORY, "./application.db")
 
 
 class Blog(BaseModel):

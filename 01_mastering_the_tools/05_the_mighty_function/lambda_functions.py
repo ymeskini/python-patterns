@@ -18,6 +18,7 @@ def send_email_promotion(
         else:
             print(f"{customer.name} is not eligible for promotion")
 
+
 def main() -> None:
     customers = [
         Customer("Alice", 25),

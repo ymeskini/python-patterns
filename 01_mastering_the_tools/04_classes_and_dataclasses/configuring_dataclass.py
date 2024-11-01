@@ -42,7 +42,6 @@ class Person:
 
 
 def main() -> None:
-
     # Create instances of both classes
     person1 = Person("Alice", 30)
     person2 = Person("Bob", 25)

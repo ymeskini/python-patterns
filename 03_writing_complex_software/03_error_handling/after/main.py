@@ -10,7 +10,8 @@ logger = Logger(__name__)
 
 
 CURRENT_DIRECTORY = os.path.dirname(__file__)
-DATABASE_FILEPATH = os.path.join(CURRENT_DIRECTORY, './application.db')
+DATABASE_FILEPATH = os.path.join(CURRENT_DIRECTORY, "./application.db")
+
 
 @dataclass
 class SQLiteConnectionManager:

@@ -8,22 +8,18 @@ PORT = 19584
 
 
 class EmailServer(Protocol):
-    def connect(self, host: str, port: int) -> None:
-        ...
+    def connect(self, host: str, port: int) -> None: ...
 
-    def login(self, user: str, password: str) -> None:
-        ...
+    def login(self, user: str, password: str) -> None: ...
 
-    def quit(self) -> None:
-        ...
+    def quit(self) -> None: ...
 
     def sendmail(
         self,
         from_address: str,
         to_address: str,
         message: str,
-    ) -> None:
-        ...
+    ) -> None: ...
 
 
 def send_email(

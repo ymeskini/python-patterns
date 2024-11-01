@@ -65,7 +65,6 @@ def compute_rental_cost(vehicle_type: str, days: int, km: int) -> int:
 
 
 def main():
-
     vehicle_type = read_vehicle_type()
 
     days = read_rent_days()
