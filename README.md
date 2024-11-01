@@ -26,7 +26,7 @@ Throughout the course, I'll use lots of examples, all written in Python. I'll as
 
 I'm intentional about the code examples in this course. In particular, I find it important to use examples that reflect real life and could in principle be part of a real codebase. No "Animal" class hierarchy here, it's going to be practical stuff that you can apply immediately.
 
-This is a course that requires your active participation. There is no magic pill unfortunately. If you want to see results, you need to apply the things I teach to your own code and gain experience with them,. To help you with this, I've included several quizzes, and many videos contain several code examples that I encourage you to download and modify to get a better grasp of the concepts.
+This is a course that requires your active participation. There is no magic pill, unfortunately. If you want to see results, you need to apply the things I teach to your own code and gain experience with them. To help you with this, I've included several quizzes, and many videos contain several code examples that I encourage you to download and modify to get a better grasp of the concepts.
 
 I hope you're excited to get started. I look forward to walking alongside you on this journey you're about to take, so, let's dive in!
 
@@ -66,7 +66,7 @@ The second part is all about growing a particular mindset towards software devel
 - Keep Things Simple
 
 ### Module 3: Writing Complex Software
-In the last module is about the practical aspects of writing more complex and maintainable software. Building upon the foundational principles covered in the previous modules, this module will guide you through the intricacies of structuring and organizing your code effectively. The goal is to give you a idea of how to create a robust project scaffolding, ensuring your codebase is scalable and easy to navigate. 
+In the last module is about the practical aspects of writing more complex and maintainable software. Building upon the foundational principles covered in the previous modules, this module will guide you through the intricacies of structuring and organizing your code effectively. The goal is to give you an idea of how to create a robust project scaffolding, ensuring your codebase is scalable and easy to navigate. 
 
 Additionally, you will learn best practices for organizing code in a way that promotes clarity and ease of maintenance, making it easier to manage and extend your projects. Finally, we’ll cover advanced error handling strategies to help you anticipate and gracefully manage unexpected issues, ensuring your software remains resilient and reliable.
 
@@ -81,6 +81,6 @@ Additionally, you will learn best practices for organizing code in a way that pr
 
 ## Do you want to help?
 
-We at arjancodes would love too hear suggestions, improvements and more to the courses. Is there a missing test?, Is there a typo somewhere? Or is there an exercise that should exist? Then contact support@arjancodes.com or simply make a PR, which will be reviewed, with the changes and updates you want to have.
+We at ArjanCodes would love to hear suggestions, improvements and more to the courses. Is there a missing test?, Is there a typo somewhere? Or is there an exercise that should exist? Then contact support@arjancodes.com or simply make a PR, which will be reviewed, with the changes and updates you want to have.
 
-You will be credited on your work as an contributor to the course!
+You will be credited on your work as a contributor to the course!
