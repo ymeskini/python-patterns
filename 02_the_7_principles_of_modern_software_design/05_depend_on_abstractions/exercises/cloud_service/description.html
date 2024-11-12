@@ -52,12 +52,12 @@
   >(<span style="color: #e6db74">"Cloud service connected."</span>)
 </div>
 <p>
-  As you can see, the class directly depends on Google-specific classes:
+  As you can see, the class directly depends on custom Google-specific classes:
   <code>GoogleCredentials</code>, <code>GoogleService</code>, and
-  <code>GoogleStorage</code>. You want to remove this direct dependency.
-  However, you can't change the original classes provided by Google. In fact,
-  you don't even have access to the source code of those classes. How do you
-  solve this? Refactor your code to remove the direct dependency.
+  <code>GoogleStorage</code> created by your colleagues. You want to remove this direct dependency.
+  However, you can't change the original classes. In fact,
+  you don't even have access to the source code of those classes (For example it is an internal package). 
+  How do you solve this? Refactor your code to remove the direct dependency.
 </p>
 <h1>&nbsp;</h1>
 <p>
