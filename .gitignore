@@ -4,3 +4,7 @@ htmlcov
 **/.DS_Store
 **/node_modules
 **/*.lock
+
+# IntelliJ IDEA / Pycharm
+**/*.iml
+**/.idea
