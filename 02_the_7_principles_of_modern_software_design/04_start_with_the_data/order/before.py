@@ -21,11 +21,7 @@ class Order:
         self.prices.append(price)
 
     @property
-    def total_price(self) -> int:
-        total = 0
-        for i in range(len(self.prices)):
-            total += self.quantities[i] * self.prices[i]
-        return total
+    def total_price(self) -> int: ...
 
 
 def main() -> None:
