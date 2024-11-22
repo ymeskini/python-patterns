@@ -1,6 +1,5 @@
 <p>
-  Suppose you have the following class that is a helper class for managing
-  access to a Google Cloud environment:
+  Suppose you have the following class, which serves as a helper for managing access to a Google Cloud environment:
 </p>
 <div
   style="
@@ -12,8 +11,7 @@
     white-space: pre-wrap;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   "
->
-  <span style="color: #66d9ef">@dataclass</span><br /><span
+><span style="color: #66d9ef">@dataclass</span><br /><span
     style="color: #66d9ef"
     >class</span
   >
@@ -21,43 +19,22 @@
     style="color: #f8f8f2"
     >auth_provider</span
   >: <span style="color: #a6e22e">GoogleCredentials</span
-  ><br />&nbsp;&nbsp;<span style="color: #f8f8f2">service</span>:
-  <span style="color: #a6e22e">GoogleServiceProvider</span
-  ><br />&nbsp;&nbsp;<span style="color: #f8f8f2">storage_manager</span>:
-  <span style="color: #a6e22e">GoogleStorage</span><br /><br />&nbsp;&nbsp;<span
+  ><br />&nbsp;&nbsp;<span style="color: #f8f8f2">service</span>:&nbsp;<span style="color: #a6e22e">GoogleServiceProvider</span
+  ><br />&nbsp;&nbsp;<span style="color: #f8f8f2">storage_manager</span>:&nbsp;<span style="color: #a6e22e">GoogleStorage</span><br /><br /><span style="color: #66d9ef">@dataclass</span><br /><span
     style="color: #66d9ef"
-    >def</span
+    >class</span
   >
-  <span style="color: #a6e22e">connect</span>(<span style="color: #f8f8f2"
-    >self</span
-  >) -&gt;
-  <span style="color: #66d9ef">None</span>:<br />&nbsp;&nbsp;&nbsp;&nbsp;<span
+  <span style="color: #a6e22e">AzureCloudService</span>:<br />&nbsp;&nbsp;<span
     style="color: #f8f8f2"
-    >print</span
-  >(<span style="color: #e6db74">"Connecting to the cloud service."</span
-  >)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
-    >credentials</span
-  >
-  =
-  <span style="color: #f8f8f2">self.auth_provider.retrieve_credentials</span
-  >()<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
-    >self.service.connect</span
-  >(<span style="color: #f8f8f2">credentials</span
-  >)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">context</span> =
-  <span style="color: #f8f8f2">self.service.get_context</span
-  >()<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2"
-    >self.storage_manager.initialize</span
-  >(<span style="color: #f8f8f2">context</span
-  >)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">print</span
-  >(<span style="color: #e6db74">"Cloud service connected."</span>)
+    >auth_provider</span
+  >: <span style="color: #a6e22e">AzureCredentials</span
+  ><br />&nbsp;&nbsp;<span style="color: #f8f8f2">service</span>:&nbsp;<span style="color: #a6e22e">AzureServiceProvider</span
+  ><br />&nbsp;&nbsp;<span style="color: #f8f8f2">storage_manager</span>:&nbsp;<span style="color: #a6e22e">AzureStorage</span><br /><br /><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">connect_to_cloud_service</span>(
+    <span style="color: #f8f8f2">cloud_service</span>: <span style="color: #a6e22e">AzureCloudService | GoogleCloudService</span>
+  ) -&gt; <span style="color: #66d9ef">None</span>:<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">if</span> <span style="color: #f8f8f2">isinstance</span>(<span style="color: #f8f8f2">cloud_service</span>, <span style="color: #a6e22e">AzureCloudService</span>):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">print</span>(<span style="color: #e6db74">"Connecting to the Azure cloud service."</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">credentials</span> = <span style="color: #f8f8f2">cloud_service.auth_provider.fetch_credentials</span>()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">cloud_service.service.authenticate</span>(<span style="color: #f8f8f2">credentials</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">context</span> = <span style="color: #f8f8f2">cloud_service.service.get_context</span>()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">cloud_service.storage_manager.setup</span>(<span style="color: #f8f8f2">context</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">else</span>:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">print</span>(<span style="color: #e6db74">"Connecting to the Google cloud service."</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">credentials</span> = <span style="color: #f8f8f2">cloud_service.auth_provider.get_credentials</span>()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">cloud_service.service.authenticate</span>(<span style="color: #f8f8f2">credentials</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">context</span> = <span style="color: #f8f8f2">cloud_service.service.get_context</span>()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">cloud_service.storage_manager.initialize</span>(<span style="color: #f8f8f2">context</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">print</span>(<span style="color: #e6db74">"Cloud service connected."</span>)
 </div>
 <p>
-  As you can see, the class directly depends on custom Google-specific classes:
-  <code>GoogleCredentials</code>, <code>GoogleService</code>, and
-  <code>GoogleStorage</code> created by your colleagues. You want to remove this direct dependency.
-  However, you can't change the original classes. In fact,
-  you don't even have access to the source code of those classes (For example it is an internal package). 
-  How do you solve this? Refactor your code to remove the direct dependency.
+  The <code>connect_to_cloud_service</code> function needs to handle the different cloud services that can be passed to it. The problem is that each service implements and behaves slightly differently. This issue arises because each class is directly coupled with the imported packages. To remove this direct coupling and improve the logic of <code>connect_to_cloud_service</code> to use a unified interface, you cannot change the imported classes from <code>azure_service</code> and <code>google_service</code>.
 </p>
 <h1>&nbsp;</h1>
 <p>

@@ -1,10 +1,10 @@
 class GoogleCredentials:
-    def retrieve_credentials(self) -> str:
+    def get_credentials(self) -> str:
         return "ADSFGKJASADFLK345098SDFSDFLKJ"
 
 
 class GoogleServiceProvider:
-    def connect(self, credentials: str) -> None:
+    def authenticate(self, credentials: str) -> None:
         print("Connecting to Google Cloud.")
 
     def get_context(self) -> str:

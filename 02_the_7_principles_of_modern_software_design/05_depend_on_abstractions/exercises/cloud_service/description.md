@@ -1,4 +1,4 @@
-Suppose you have the following class that is a helkper class for managing access to a Google Cloud environment:
+Suppose you have the following class, which serves as a helper for managing access to a Google Cloud environment:
 
 ```python
 @dataclass
@@ -7,15 +7,33 @@ class CloudService:
     service: GoogleServiceProvider
     storage_manager: GoogleStorage
 
-    def connect(self) -> None:
-        print("Connecting to the cloud service.")
-        credentials = self.auth_provider.retrieve_credentials()
-        self.service.connect(credentials)
-        context = self.service.get_context()
-        self.storage_manager.initialize(context)
-        print("Cloud service connected.")
+@dataclass
+class AzureCloudService:
+    auth_provider: AzureCredentials
+    service: AzureServiceProvider
+    storage_manager: AzureStorage
+
+def connect_to_cloud_service(
+    cloud_service: AzureCloudService | GoogleCloudService,
+) -> None:
+    if isinstance(cloud_service, AzureCloudService):
+        print("Connecting to the Azure cloud service.")
+        credentials = cloud_service.auth_provider.fetch_credentials()
+        cloud_service.service.authenticate(credentials)
+        context = cloud_service.service.get_context()
+        cloud_service.storage_manager.setup(context)
+    else:
+        print("Connecting to the Google cloud service.")
+        credentials = cloud_service.auth_provider.get_credentials()
+        cloud_service.service.authenticate(credentials)
+        context = cloud_service.service.get_context()
+        cloud_service.storage_manager.initialize(context)
+
+    print("Cloud service connected.")
 ```
 
-As you can see, the class directly depends on custom Google-specific classes: `GoogleCredentials`, `GoogleService`, and `GoogleStorage` created by your colleagues. You want to remove this direct dependency. However, you can't change the original classes. In fact, you don't even have access to the source code of those classes (For example it is an internal package). How do you solve this? Refactor your code to remove the direct dependency.
+The connect_to_cloud_service function needs to handle the different cloud services that can be passed to it. The problem is that each service implements and behaves slightly differently. This issue arises because each class is directly coupled with the imported packages. To remove this direct coupling and improve the logic of connect_to_cloud_service to use a unified interface, you cannot change the imported classes from azure_service and google_service.
+
+How do you solve this?
 
 Compatible Python Versions: 3.8+
