@@ -12,17 +12,17 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/egges">
-                    <img src="https://avatars.githubusercontent.com/u/2195171?v=4" width="100;" alt="egges"/>
-                    <br />
-                    <sub><b>egges</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/mikeweltevrede">
                     <img src="https://avatars.githubusercontent.com/u/46759318?v=4" width="100;" alt="mikeweltevrede"/>
                     <br />
                     <sub><b>mikeweltevrede</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/egges">
+                    <img src="https://avatars.githubusercontent.com/u/2195171?v=4" width="100;" alt="egges"/>
+                    <br />
+                    <sub><b>egges</b></sub>
                 </a>
             </td>
 		</tr>
