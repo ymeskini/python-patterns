@@ -8,3 +8,5 @@ htmlcov
 # IntelliJ IDEA / Pycharm
 **/*.iml
 **/.idea
+
+.env
