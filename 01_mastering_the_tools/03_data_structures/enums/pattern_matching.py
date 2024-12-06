@@ -19,6 +19,6 @@ def action(status: HTTPStatus) -> str:
 
 
 def main() -> None:
-    status = HTTPStatus(200)
+    status = HTTPStatus(200, "Request succeeded.")
 
     print(action(status))
