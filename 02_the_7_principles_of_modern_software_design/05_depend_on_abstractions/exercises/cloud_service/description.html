@@ -1,5 +1,5 @@
 <p>
-  Suppose you have the following class, which serves as a helper for managing access to a Google Cloud environment:
+  Suppose you have the following classes, which serve as a helper for managing access to a Google Cloud environment:
 </p>
 <div
   style="
@@ -11,7 +11,11 @@
     white-space: pre-wrap;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   "
-><span style="color: #66d9ef">@dataclass</span><br /><span
+>
+  <span style="color: #66d9ef">from</span> <span style="color: #f8f8f2">google_service</span> <span style="color: #66d9ef">import</span> <span style="color: #a6e22e">GoogleCredentials</span>, <span style="color: #a6e22e">GoogleServiceProvider</span>, <span style="color: #a6e22e">GoogleStorage</span><br />
+  <span style="color: #66d9ef">from</span> <span style="color: #f8f8f2">azure_service</span> <span style="color: #66d9ef">import</span> <span style="color: #a6e22e">AzureCredentials</span>, <span style="color: #a6e22e">AzureServiceProvider</span>, <span style="color: #a6e22e">AzureStorage</span><br /><br />
+
+  <span style="color: #66d9ef">@dataclass</span><br /><span
     style="color: #66d9ef"
     >class</span
   >
@@ -33,9 +37,11 @@
     <span style="color: #f8f8f2">cloud_service</span>: <span style="color: #a6e22e">AzureCloudService | GoogleCloudService</span>
   ) -&gt; <span style="color: #66d9ef">None</span>:<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">if</span> <span style="color: #f8f8f2">isinstance</span>(<span style="color: #f8f8f2">cloud_service</span>, <span style="color: #a6e22e">AzureCloudService</span>):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">print</span>(<span style="color: #e6db74">"Connecting to the Azure cloud service."</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">credentials</span> = <span style="color: #f8f8f2">cloud_service.auth_provider.fetch_credentials</span>()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">cloud_service.service.authenticate</span>(<span style="color: #f8f8f2">credentials</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">context</span> = <span style="color: #f8f8f2">cloud_service.service.get_context</span>()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">cloud_service.storage_manager.setup</span>(<span style="color: #f8f8f2">context</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">else</span>:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">print</span>(<span style="color: #e6db74">"Connecting to the Google cloud service."</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">credentials</span> = <span style="color: #f8f8f2">cloud_service.auth_provider.get_credentials</span>()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">cloud_service.service.authenticate</span>(<span style="color: #f8f8f2">credentials</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">context</span> = <span style="color: #f8f8f2">cloud_service.service.get_context</span>()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">cloud_service.storage_manager.initialize</span>(<span style="color: #f8f8f2">context</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f8f8f2">print</span>(<span style="color: #e6db74">"Cloud service connected."</span>)
 </div>
+
 <p>
   The <code>connect_to_cloud_service</code> function needs to handle the different cloud services that can be passed to it. The problem is that each service implements and behaves slightly differently. This issue arises because each class is directly coupled with the imported packages. To remove this direct coupling and improve the logic of <code>connect_to_cloud_service</code> to use a unified interface, you cannot change the imported classes from <code>azure_service</code> and <code>google_service</code>.
 </p>
+
 <h1>&nbsp;</h1>
 <p>
   <span style="text-decoration: underline">Compatible Python Versions:</span>

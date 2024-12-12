@@ -1,4 +1,4 @@
-from abc import ABC
+from typing import Protocol
 
 from google_service import (
     GoogleCredentials,
@@ -13,22 +13,18 @@ from azure_service import (
 )
 
 
-class CloudAdapter(ABC):
-    def retrieve_credentials(self) -> str:
-        raise NotImplementedError
+class CloudAdapter(Protocol):
+    def retrieve_credentials(self) -> str: ...
 
-    def connect(self, credentials: str) -> None:
-        raise NotImplementedError
+    def connect(self, credentials: str) -> None: ...
 
-    def get_context(self) -> str:
-        raise NotImplementedError
+    def get_context(self) -> str: ...
 
-    def initialize_storage(self, context: str) -> None:
-        raise NotImplementedError
+    def initialize_storage(self, context: str) -> None: ...
 
 
 # Google-specific Cloud Adapter implementation
-class GoogleCloudAdapter(CloudAdapter):
+class GoogleCloudAdapter:
     def __init__(
         self,
         google_credentials: GoogleCredentials,
@@ -56,7 +52,7 @@ class GoogleCloudAdapter(CloudAdapter):
         self.google_storage.initialize(context)
 
 
-class AzureCloudAdapter(CloudAdapter):
+class AzureCloudAdapter:
     def __init__(
         self,
         azure_credentials: AzureCredentials,

@@ -1,6 +1,9 @@
-Suppose you have the following class, which serves as a helper for managing access to a Google Cloud environment:
+Suppose you have the following classes, which serves as a helper for managing access to a Google Cloud environment:
 
 ```python
+from google_service import GoogleCredentials, GoogleServiceProvider, GoogleStorage
+from azure_service import AzureCredentials, AzureServiceProvider, AzureStorage
+
 @dataclass
 class CloudService:
     auth_provider: GoogleCredentials

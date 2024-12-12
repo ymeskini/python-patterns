@@ -1,10 +1,10 @@
-As you can see from the earlier example, the `CloudService` class directly depends on specific classes like `GoogleCredentials`, `GoogleServiceProvider`, and `GoogleStorage`. You want to eliminate this direct dependency since modifying the original classes provided by Google and Azure is not feasible, particularly as you don't have access to the source code of these classes. How can you achieve this? Refactor your code to remove the direct dependency through the use of protocol classes or an adapter pattern.
+As you can see from the earlier example, the `CloudService` class directly depends on specific classes like `GoogleCredentials`, `GoogleServiceProvider`, and `GoogleStorage`. You want to eliminate this direct dependency since modifying the original classes provided by Google and Azure is not feasible, particularly as you don't have access to the source code of these classes. How can you achieve this? Refactor your code to remove the direct dependency through the use of protocol classes (with the adapter pattern).
 
-Protocol classes, or using an adapter pattern, are particularly useful in this scenario because they allow you to define a uniform interface for what you expect in your classes, methods, or functions. Python's structural typing system then ensures that the types are compatible without requiring an explicit relationship.
+Protocol classes are particularly useful in this scenario because they allow you to define a uniform interface (Like a contract) for what you expect in your classes, methods, or functions. Python's structural typing system then ensures that the types are compatible without requiring an explicit relationship.
 
 In `solution.py`, we've implemented an adapter pattern. Here’s how we approached it:
 
-- **CloudAdapter Abstract Base Class**: This abstract class serves as a template for any cloud service adapter. It defines methods like `retrieve_credentials`, `connect`, `get_context`, and `initialize_storage`, which all adapters must implement.
+- **CloudAdapter Protocol**: This protocol serves as a contract for any cloud service adapter. It defines methods like `retrieve_credentials`, `connect`, `get_context`, and `initialize_storage`, which all adapters must adhere to the contract.
 
 - **GoogleCloudAdapter and AzureCloudAdapter**: These are concrete implementations of the `CloudAdapter` for Google and Azure, respectively. They encapsulate the functionality specific to each cloud provider, such as retrieving credentials, connecting to the service, getting context, and initializing storage.
 

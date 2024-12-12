@@ -10,28 +10,12 @@ class GoogleCloudService:
     service: GoogleServiceProvider
     storage_manager: GoogleStorage
 
-    def connect(self) -> None:
-        print("Connecting to the cloud service.")
-        credentials = self.auth_provider.get_credentials()
-        self.service.authenticate(credentials)
-        context = self.service.get_context()
-        self.storage_manager.initialize(context)
-        print("Cloud service connected.")
-
 
 @dataclass
 class AzureCloudService:
     auth_provider: AzureCredentials
     service: AzureServiceProvider
     storage_manager: AzureStorage
-
-    def connect(self) -> None:
-        print("Connecting to the cloud service.")
-        credentials = self.auth_provider.fetch_credentials()
-        self.service.authenticate(credentials)
-        context = self.service.get_context()
-        self.storage_manager.setup(context)
-        print("Cloud service connected.")
 
 
 def connect_to_cloud_service(
