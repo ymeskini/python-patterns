@@ -13,7 +13,7 @@ def main() -> None:
 
     # Slicing
     first_three = numbers[:3]
-    print(f"Fifth three element: {first_three}")
+    print(f"Firth three elements: {first_three}")
 
     # Slicing with a step
     every_other = numbers[::2]

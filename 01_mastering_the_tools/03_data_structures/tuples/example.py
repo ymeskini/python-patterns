@@ -54,7 +54,7 @@ numbers = (1, 2, 3)  # A list would be more suitable for this purpose
 Command = Union[tuple[str, int], tuple[str, int, int], tuple[str]]
 
 
-def handle_command(command: Command):
+def handle_command(command: Command) -> None:
     match command:
         case ("add", x, y):
             print(f"Adding {x} and {y}: {x + y}")
