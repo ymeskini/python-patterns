@@ -20,5 +20,8 @@ def action(status: HTTPStatus) -> str:
 
 def main() -> None:
     status = HTTPStatus(200, "Request succeeded.")
-
     print(action(status))
+
+
+if __name__ == "__main__":
+    main()
