@@ -20,7 +20,7 @@ for status in HTTPStatus:
 
 print(f"Name of the enum member: {HTTPStatus.OK.name}")
 
-print(f"Enum member from value: {HTTPStatus(404)}")
+print(f"Enum member from value: {HTTPStatus(404).name}")
 
 print(f"value of the enum member: {HTTPStatus.NOT_FOUND.value}")
 
@@ -38,8 +38,8 @@ def main() -> None:
     description = response_description(HTTPStatus.OK)
     print(description)
 
-    if HTTPStatus.BAD_REQUEST == HTTPStatus.BAD_REQUEST:
-        print("Both are client error responses")
+    if 400 <= HTTPStatus.BAD_REQUEST < 500:
+        print("HTTPStatus.BAD_REQUEST is an error response.")
 
     if HTTPStatus.INTERNAL_SERVER_ERROR in HTTPStatus:
         print("500 Internal Server Error is a valid HTTP status code.")

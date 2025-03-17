@@ -16,7 +16,7 @@ def main() -> None:
     print(f"profession: {profession}")
 
     # Adding a new key-value pair
-    person["profession"] = "YouTuber"
+    person["hobby"] = "YouTuber"
     print(f"Dictionary after adding a new key-value pair: {person}")
 
     # Removing a key-value pair
