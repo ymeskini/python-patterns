@@ -4,10 +4,12 @@ In case of `generate_id`, one way to write tests for this is to not use unit tes
 
 In case of `weekday` you're going to have to patch the `today` function so that it always returns the same date and then you can test that the function returns the right weekday name. This is all doable, but it does require extra work to write tests due to these functions not being pure.
 
-b) The file `exercise_1_solution.py` contains a possible solution that turns these functions into pure functions. As you can see, I used the same approach for both functions: instead of directly calling a function (like `random.choice`) or creating an object (like a `datetime` object), I used dependency injection to provide the function or object. Testing the code is now way easier, because in our testing code, we can supply the function or object we want.
+b) The file `solution_v1.py` contains a possible solution that turns these functions into pure functions. As you can see, I used the same approach for both functions: instead of directly calling a function (like `random.choice`) or creating an object (like a `datetime` object), I used dependency injection to provide the function or object. Testing the code is now way easier, because in our testing code, we can supply the function or object we want.
 
 Another change is that you see that the `main` function now serves as the place where everything is created and patched up. It's a really good idea to setup your application in such a way that there is one place where this happens - let's call that the "dirty" place. If your application looks like this, it means that all the parts have been properly separated and you can easily patch them together and change things independently.
 
 Note: I used partial function application to make sure random.choice adheres to the `SelectionFn` type. Unfortunately, this is not correctly detected by the type system, so I wrote a comment behind the line to ignore type issues in this case.
+
+Technically speaking, `generate_id` in `solution_v1.py` is still not a pure function though since it relies on a possibly impure selection function. In `solution_v2.py`, I used a different approach where, instead of a selection function, you supply a seed value and that reads a value from a lookup table. This turns the function into a pure function, since it's now completely deterministic (in other words, providing the same seed value always results in the same id).
 
 
