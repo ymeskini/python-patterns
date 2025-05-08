@@ -24,10 +24,20 @@ Class `B` has three instance variables including a list of integers. If the list
 class B:
     x: int
     y: str = "hello"
-    l: list[int] = field(default_factory=list)
+    values: list[int] | None = field(default_factory=list)
 ```
 
 Note that with dataclasses you have to make sure that instance variables that don't have a default value are placed above variables with a default value. The reason is that the order in which you define the fields determines the order of the arguments, and arguments without default value can't come after arguments with a default value in Python.
+
+Also, you could decide to simplify the type of `values` and remove the `| None` part, since if you don't provide a value, it will be set to the empty list:
+
+```python
+@dataclass
+class B:
+    x: int
+    y: str = "hello"
+    values: list[int] = field(default_factory=list)
+```
 
 Alright, on to class `C`. Here we have two instance variables, but only the first one is provided and the second one depends on the value of the first one. Here we need to rely on `__post_init__` to assign the value to `b` after `a` has been set, and we also need to make sure that you can't set `b` in the initializer. This is the dataclass that achieves this:
 

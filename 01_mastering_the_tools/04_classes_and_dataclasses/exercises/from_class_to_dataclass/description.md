@@ -6,10 +6,10 @@ class A:
         self._length = 0
 
 class B:
-    def __init__(self, x: int, y: str = "hello", l: list[int] | None = None) -> None:
+    def __init__(self, x: int, y: str = "hello", values: list[int] | None = None) -> None:
         self.x = x
         self.y = y
-        self.l = [] if not l else l
+        self.values = [] if not values else values
 
 class C:
     def __init__(self, a: int = 3) -> None:
