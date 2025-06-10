@@ -83,7 +83,7 @@ def main() -> None:
         ),
         Post("Get your carrot cake now, the promotion ends today!", 1568133400),
     ]
-    channels = [
+    channels: list[SocialChannel] = [
         YoutubeChannel(100),
         FacebookChannel(100),
         TwitterChannel(100),
