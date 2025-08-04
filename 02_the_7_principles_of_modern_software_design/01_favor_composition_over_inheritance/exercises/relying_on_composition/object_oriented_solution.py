@@ -4,6 +4,7 @@ from dataclasses import dataclass
 
 from cloudengine import CloudProvider
 from cloudengine.google import GoogleAuth
+from typing import Protocol, Any
 
 VIDEO_BUCKET = "video-backup.arjancodes.com"
 REGION = "eu-west-1c"
@@ -20,10 +21,13 @@ def create_cloud_provider(
     )
     return ACCloud(cloud, bucket_name)
 
+class CloudProviderProtocol(Protocol):
+    def filter_by_query(self, bucket: str, query: str, max: int) -> dict[str, Any]:
+        ...
 
 @dataclass
 class ACCloud:
-    cloud_provider: CloudProvider
+    cloud_provider: CloudProviderProtocol
     bucket_name: str
 
     def find_files(self, query: str, max_result: int) -> list[str]:
