@@ -36,6 +36,6 @@ Of course, HTML has many more different elements. In the elements above, there i
 
 Refactor the class hierarchy by introducing an abstract base class `HTMLElement` that divs, buttons, and spans are subclasses of. Minimize code duplication and make sure that each element is able to compute its position on the screen.
 
-In order to get started more quickly, download the code for this exercise above (but don't look at the solution yet!).
+## b) Protocols
 
-Compatible Python Versions: 3.10+
+Can you use a _protocol_ just as easily instead of an abstract base class? What would need to be changed so you can use a protocol class instead of an abstract base class?

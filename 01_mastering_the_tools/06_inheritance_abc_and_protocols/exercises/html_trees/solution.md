@@ -1,3 +1,5 @@
+## a) Abstraction
+
 What we need to do is create an `HTMLElement` abstract class. This class is basically what the `Div` class was before, but made abstract:
 
 ```python
@@ -31,10 +33,6 @@ There's a couple of interesting things to note:
 - As you can see in the new version, you can now also compute screen positions of elements that are not divs, such as the span.
 
 ## b) Protocols
-
-Can you use a _protocol_ just as easily instead of an abstract base class? What would need to be changed so you can use a protocol class instead of an abstract base class?
-
-### Solution
 
 The issue that you're going to run into is that with protocols you rely on structural typing (duck typing) instead of inheritance. That means that if you have an `HTMLElement` protocol and you define properties and methods inside of it, the other classes won't be able to use that if they don't inherit from `HTMLElement` anymore. There are a couple of ways to fix this:
 
