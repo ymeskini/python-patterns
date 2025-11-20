@@ -1,16 +1,21 @@
-[tool.poetry]
+[project]
 name = "the-mighty-function"
 version = "0.1.0"
 description = ""
-authors = ["Andreas Bergman <andreas@arjancodes.com>"]
-license = "MIT"
+requires-python = "~=3.12"
 readme = "README.md"
+license = "MIT"
+dependencies = []
+[[project.authors]]
+name = "Andreas Bergman"
+email = "andreas@arjancodes.com"
 
-[tool.poetry.dependencies]
-python = "^3.12"
-pytest = "^8.0.0"
+[tool.pylint."MESSAGES CONTROL"]
+disable = [ "missing-class-docstring", "missing-function-docstring", "missing-module-docstring",]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+]
 
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
