@@ -1,20 +1,20 @@
-[tool.poetry]
+[project]
 name = "app"
 version = "0.1.0"
 description = ""
-authors = ["Andreas Bergman <andreas@arjancodes.com>"]
-license = "MIT"
+requires-python = "~=3.11"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.11"
-pytest = "^8.2.1"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+license = "MIT"
+dependencies = []
+[[project.authors]]
+name = "Andreas Bergman"
+email = "andreas@arjancodes.com"
 
 [tool.pytest.ini_options]
-pythonpath = [".", "src"]
-addopts = ["--import-mode=importlib"]
+pythonpath = [ ".", "src",]
+addopts = [ "--import-mode=importlib",]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+]

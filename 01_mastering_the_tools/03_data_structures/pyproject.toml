@@ -1,16 +1,15 @@
-[tool.poetry]
+[project]
 name = "data-strucutres"
 version = "0.1.0"
 description = ""
-authors = ["Andreas Bergman <andreas@arjancodes.com>"]
-license = "MIT"
+requires-python = "~=3.12"
 readme = "README.md"
+license = "MIT"
+dependencies = [ "numpy>=1.26.3,<2",]
+[[project.authors]]
+name = "Andreas Bergman"
+email = "andreas@arjancodes.com"
 
-[tool.poetry.dependencies]
-python = "^3.12"
-numpy = "^1.26.3"
+[tool.pylint."MESSAGES CONTROL"]
+disable = [ "missing-class-docstring", "missing-function-docstring", "missing-module-docstring",]
 
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
