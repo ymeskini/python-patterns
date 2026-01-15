@@ -1,12 +1,10 @@
-from __future__ import annotations
-
 from abc import ABC
 from dataclasses import dataclass
-
+from typing import Self
 
 @dataclass
 class HTMLElement(ABC):
-    parent: HTMLElement | None = None
+    parent: Self | None = None
     x: int = 0
     y: int = 0
 

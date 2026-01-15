@@ -1,11 +1,9 @@
-from __future__ import annotations
-
 from dataclasses import dataclass
-
+from typing import Self
 
 @dataclass
 class Div:
-    parent: Div | None = None
+    parent: Self | None = None
     x: int = 0
     y: int = 0
 
