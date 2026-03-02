@@ -35,7 +35,9 @@ class NotificationService:
 
 @dataclass
 class MessageQueue:
-    subscribers: list[NotificationService] = field(default_factory=list)
+    subscribers: list[NotificationService] = field(
+        default_factory=list[NotificationService]
+    )
 
     def publish(self, message: Message) -> None:
         for subscriber in self.subscribers:

@@ -1,12 +1,15 @@
 from dataclasses import dataclass, field
-import numpy as np
 from datetime import datetime
+
+import numpy as np
 
 
 @dataclass
 class Account:
     owner: str
-    transactions: list[tuple[datetime, str, int]] = field(default_factory=list)
+    transactions: list[tuple[datetime, str, int]] = field(
+        default_factory=list[tuple[datetime, str, int]]
+    )
     _balance: int = 0
 
     def add_transaction(self, transaction_type: str, amount: int) -> None:

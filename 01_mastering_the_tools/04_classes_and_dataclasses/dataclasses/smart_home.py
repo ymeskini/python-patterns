@@ -18,7 +18,7 @@ class DeviceType(StrEnum):
 
 @dataclass
 class DeviceConfig:
-    configuration: dict[str, str] = field(default_factory=dict)
+    configuration: dict[str, str] = field(default_factory=dict[str, str])
 
     def update_config(self, key: str, value: str):
         """Update or add a configuration setting for the device."""
@@ -57,7 +57,7 @@ class IoTDevice:
 
 @dataclass
 class SmartHome:
-    devices: list[IoTDevice] = field(default_factory=list)
+    devices: list[IoTDevice] = field(default_factory=list[IoTDevice])
 
     def add_device(self, device: IoTDevice) -> IoTDevice:
         """Add a new IoT device to the smart home system."""

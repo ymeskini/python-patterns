@@ -13,7 +13,7 @@ class IoTDevice:
     name: str
     device_type: str
     connectivity: ConnectivityStatus
-    sensors: list[str] = field(default_factory=list)
+    sensors: list[str] = field(default_factory=list[str])
     location: str = "Unknown"
     firmware_version: int = 1
 

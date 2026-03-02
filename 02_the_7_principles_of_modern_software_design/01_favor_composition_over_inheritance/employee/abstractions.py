@@ -48,7 +48,7 @@ class FreelanceContract:
 class Employee:
     name: str
     id: int
-    payment_sources: list[PaymentSource] = field(default_factory=list)
+    payment_sources: list[PaymentSource] = field(default_factory=list[PaymentSource])
 
     def add_payment_source(self, payment_source: PaymentSource):
         self.payment_sources.append(payment_source)

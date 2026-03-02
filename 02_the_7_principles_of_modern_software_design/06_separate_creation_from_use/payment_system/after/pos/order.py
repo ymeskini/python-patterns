@@ -16,7 +16,7 @@ class LineItem:
 
 @dataclass
 class Order:
-    items: list[LineItem] = field(default_factory=list)
+    items: list[LineItem] = field(default_factory=list[LineItem])
     status: PaymentStatus = PaymentStatus.OPEN
 
     def add_item(self, name: str, quantity: int, price: int) -> None:

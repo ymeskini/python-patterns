@@ -10,7 +10,7 @@ class A:
 class B:
     x: int
     y: str = "hello"
-    values: list[int] | None = field(default_factory=list)
+    values: list[int] | None = field(default_factory=list[int])
 
 
 @dataclass

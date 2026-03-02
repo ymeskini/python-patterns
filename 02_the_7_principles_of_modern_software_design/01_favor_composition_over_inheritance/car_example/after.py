@@ -51,7 +51,7 @@ class Vehicle:
     fuel_type: FuelType
     license_plate: str
     reserved: bool = False
-    pricing: list[Pricing] = field(default_factory=list)
+    pricing: list[Pricing] = field(default_factory=list[Pricing])
 
 
 @dataclass
@@ -71,7 +71,7 @@ class Trailer:
     model: str
     capacity_m3: int
     reserved: bool = False
-    pricing: list[Pricing] = field(default_factory=list)
+    pricing: list[Pricing] = field(default_factory=list[Pricing])
 
 
 def main():

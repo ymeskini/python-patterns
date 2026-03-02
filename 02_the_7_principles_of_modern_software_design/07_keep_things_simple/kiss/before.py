@@ -45,9 +45,9 @@ class VariableDiscount:
 
 @dataclass
 class Order:
-    items: list[LineItem] = field(default_factory=list)
+    items: list[LineItem] = field(default_factory=list[LineItem])
     status: PaymentStatus = PaymentStatus.OPEN
-    discounts: list[Discount] = field(default_factory=list)
+    discounts: list[Discount] = field(default_factory=list[LineItem])
 
     def add_item(self, name: str, quantity: int, price: int) -> None:
         self.items.append(LineItem(name, quantity, price))
