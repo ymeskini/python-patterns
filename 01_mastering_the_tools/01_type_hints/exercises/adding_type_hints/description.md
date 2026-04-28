@@ -4,34 +4,34 @@ Make sure that you have installed pylance or similar to get type hints in your I
 
 ```Python
 def add_book(collection, title, author):
-   collection.append({"title": title, "author": author})
+    collection.append({"title": title, "author": author})
 
- def display_books(collection):
-   for book in collection:
-     print(f"Title: {book['title']}, Author: {book['author']}")
 
- def find_book_by_title(collection, title):
-   for book in collection:
-     if book['title'] == title:
-       return book
+def display_books(collection):
+    for book in collection:
+        print(f"Title: {book['title']}, Author: {book['author']}")
 
-   return None
 
- def filter_even_numbers(numbers):
-   return [num for num in numbers if num % 2 == 0]
+def find_book_by_title(collection, title):
+    for book in collection:
+        if book["title"] == title:
+            return book
+    return None
 
- def main():
 
-   my_books = []
+def filter_even_numbers(numbers):
+    return [num for num in numbers if num % 2 == 0]
 
-   add_book(my_books, "1984", "George Orwell")
 
-   add_book(my_books, "To Kill a Mockingbird", "Harper Lee")
+def main():
+    my_books = []
+    add_book(my_books, "1984", "George Orwell")
+    add_book(my_books, "To Kill a Mockingbird", "Harper Lee")
+    display_books(my_books)
 
-   display_books(my_books)
 
- if __name__ == "__main__":
-   main()
+if __name__ == "__main__":
+    main()
 ```
 
 Compatible Python Versions: 3.9+
