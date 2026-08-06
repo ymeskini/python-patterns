@@ -1,3 +1,4 @@
+from dataclasses import dataclass, field
 from enum import StrEnum, auto
 
 
@@ -8,31 +9,38 @@ class PaymentStatus(StrEnum):
     PAID = auto()
 
 
-class Order:
-    def __init__(self):
-        self.items: list[str] = []
-        self.quantities: list[int] = []
-        self.prices: list[int] = []
-        self.status: PaymentStatus = PaymentStatus.OPEN
+@dataclass
+class LineItem:
+    item: str
+    quantity: int
+    price: int
 
-    def add_item(self, name: str, quantity: int, price: int) -> None:
-        self.items.append(name)
-        self.quantities.append(quantity)
-        self.prices.append(price)
+    @property
+    def total_price(self) -> int:
+        return self.quantity * self.price
+
+
+@dataclass
+class Order:
+    items: list[LineItem] = field(default_factory=list[LineItem])
+    status: PaymentStatus = PaymentStatus.OPEN
+
+    def add_item(self, item: LineItem) -> None:
+        self.items.append(item)
 
     @property
     def total_price(self) -> int:
         total = 0
-        for i in range(len(self.prices)):
-            total += self.quantities[i] * self.prices[i]
+        for item in self.items:
+            total += item.total_price
         return total
 
 
 def main() -> None:
     order = Order()
-    order.add_item("Keyboard", 1, 5000)
-    order.add_item("SSD", 1, 15000)
-    order.add_item("USB cable", 2, 500)
+    order.add_item(LineItem("Keyboard", 1, 5000))
+    order.add_item(LineItem("SSD", 1, 15000))
+    order.add_item(LineItem("USB cable", 2, 500))
 
     print(f"The total price is: ${(order.total_price / 100):.2f}.")
 
