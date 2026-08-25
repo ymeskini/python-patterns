@@ -21,7 +21,7 @@ def main() -> None:
         description="Payment for services rendered",
     )
 
-    transaction.amount = 3000
+    transaction.amount = 3000  # type: ignore[misc]  # frozen dataclass, raises at runtime
 
     print(transaction)
 

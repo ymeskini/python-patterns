@@ -1,10 +1,9 @@
 from abc import ABC
 from dataclasses import dataclass
-from typing import Self
 
 @dataclass
 class HTMLElement(ABC):
-    parent: Self | None = None
+    parent: "HTMLElement | None" = None
     x: int = 0
     y: int = 0
 

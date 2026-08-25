@@ -32,7 +32,7 @@ print(f"value of the enum member: {HTTPStatus.NOT_FOUND.value}")
 
 
 def response_description(status: HTTPStatus) -> str:
-    if status == HTTPStatus.zaz:
+    if status == HTTPStatus.OK:
         return "Request succeeded"
     elif status == HTTPStatus.NOT_FOUND:
         return "Resource not found"

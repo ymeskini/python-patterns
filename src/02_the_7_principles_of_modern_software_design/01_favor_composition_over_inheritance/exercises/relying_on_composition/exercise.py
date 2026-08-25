@@ -16,7 +16,7 @@ class ACCloud(CloudProvider):
         response = self.filter_by_query(
             bucket=self.bucket_name, query=query, max=max_result
         )
-        return response["result"]["data"][0]
+        return response["result"]["data"]
 
 
 class VideoStorage(ACCloud):

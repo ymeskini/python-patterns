@@ -38,17 +38,21 @@ def connect_to_cloud_service(
 
 
 def main() -> None:
-    credentials = GoogleCredentials()
-    service = GoogleServiceProvider()
-    storage = GoogleStorage()
-    cloud_service = GoogleCloudService(credentials, service, storage)
-    connect_to_cloud_service(cloud_service)
+    google_credentials = GoogleCredentials()
+    google_service = GoogleServiceProvider()
+    google_storage = GoogleStorage()
+    google_cloud_service = GoogleCloudService(
+        google_credentials, google_service, google_storage
+    )
+    connect_to_cloud_service(google_cloud_service)
 
-    credentials = AzureCredentials()
-    service = AzureServiceProvider()
-    storage = AzureStorage()
-    cloud_service = AzureCloudService(credentials, service, storage)
-    connect_to_cloud_service(cloud_service)
+    azure_credentials = AzureCredentials()
+    azure_service = AzureServiceProvider()
+    azure_storage = AzureStorage()
+    azure_cloud_service = AzureCloudService(
+        azure_credentials, azure_service, azure_storage
+    )
+    connect_to_cloud_service(azure_cloud_service)
 
 
 if __name__ == "__main__":

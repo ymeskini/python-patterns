@@ -41,7 +41,7 @@ def process_messages(sources: Sequence[MessageSource]) -> None:
 
 
 def main() -> None:
-    sources = [
+    sources: list[MessageSource] = [
         FileMessageSource("/path/to/file"),
         NetworkMessageSource("192.168.1.1"),
         APIMessageSource("https://api.example.com"),

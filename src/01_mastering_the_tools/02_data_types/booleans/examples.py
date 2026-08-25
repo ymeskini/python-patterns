@@ -18,7 +18,8 @@ def main() -> None:
     print(f"safe_division: {safe_division}")
 
     number = 10
-    result = "Positive" if number >= 0 else "Negative"
+    sign = "Positive" if number >= 0 else "Negative"
+    print(f"sign: {sign}")
 
     NOT = not True  # False
     AND = True and False  # False
