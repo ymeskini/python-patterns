@@ -13,6 +13,7 @@ class Div:
         parent_x, parent_y = self.parent.compute_screen_position()
         return (parent_x + self.x, parent_y + self.y)
 
+
 @dataclass
 class Button:
     parent: Div
@@ -21,6 +22,7 @@ class Button:
 
     def click(self) -> None:
         print("Click!")
+
 
 @dataclass
 class Span:

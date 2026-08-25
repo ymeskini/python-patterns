@@ -2,7 +2,7 @@ Suppose you have the following program that uses a device's camera to scan a QR 
 
 ```python
 class Camera(StrEnum):
-    FRONT = auto()  
+    FRONT = auto()
     BACK = auto()
 
 

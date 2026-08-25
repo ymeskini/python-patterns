@@ -7,7 +7,9 @@ ages: list[int] = [23, 43, 35]
 def verify_password(submitted_password: str, stored_hash: str) -> bool:
     return True
 
+
 a = type(verify_password)
+
 
 class Car:
     def __init__(self, name: str, cost: int, brand: str):

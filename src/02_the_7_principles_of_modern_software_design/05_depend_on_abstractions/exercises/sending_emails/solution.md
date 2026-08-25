@@ -15,8 +15,7 @@ The `send_email` function depends on the `SMTP` type from `smtplib`. Removing th
 
 ```python
 def send_email(
-    server: SMTP,
-    message: str, to_address: str, from_address: str = DEFAULT_EMAIL
+    server: SMTP, message: str, to_address: str, from_address: str = DEFAULT_EMAIL
 ) -> None:
     server.connect(HOST, PORT)
     # etc

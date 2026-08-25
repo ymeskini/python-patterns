@@ -1,8 +1,10 @@
 from typing import TypedDict
 
+
 class Book(TypedDict):
     title: str
     author: str
+
 
 def add_book(collection: list[Book], title, author):
     collection.append({"title": title, "author": author})

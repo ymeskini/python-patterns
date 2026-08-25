@@ -5,6 +5,7 @@ Here is an excerpt from a Python script that processes a CSV file:
 ```python
 Record = dict[str, Any]
 
+
 def main() -> None:
     with open("data.csv") as f:
         reader = csv.DictReader(f)

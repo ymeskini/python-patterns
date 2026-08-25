@@ -6,6 +6,7 @@ class EmployeeType(StrEnum):
     PART_TIME = auto()
     CONTRACTOR = auto()
 
+
 def main() -> None:
     sum = 0.1 + 0.1 + 0.1
     expected = 0.3

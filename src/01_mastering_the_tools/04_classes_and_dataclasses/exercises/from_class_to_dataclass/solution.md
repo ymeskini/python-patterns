@@ -74,7 +74,8 @@ class Customer:
     street: str
     postal_code: str
     city: str
-    email :str
+    email: str
+
 
 @dataclass
 class Phone:
@@ -82,6 +83,7 @@ class Phone:
     model: str
     price: int
     serial: str
+
 
 @dataclass
 class Plan:
@@ -104,10 +106,11 @@ class Address:
     postal_code: str
     city: str
 
+
 @dataclass
 class Customer:
     name: str
-    email :str
+    email: str
     addresses: list[Address] = field(default_factory=list[Address])
 ```
 

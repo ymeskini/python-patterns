@@ -3,6 +3,7 @@ Suppose you're building a game that involves creating different types of enemies
 ```python
 from dataclasses import dataclass
 
+
 class EnemyType(StrEnum):
     KNIGHT = auto()
     ARCHER = auto()

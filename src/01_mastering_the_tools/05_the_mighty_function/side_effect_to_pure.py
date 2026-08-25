@@ -6,9 +6,8 @@ CUSTOMERS = {
 
 type Directory = dict[str, dict[str, str]]
 
-def update_phone_number(
-    customers: Directory, key: str, new_number: str
-) -> Directory:
+
+def update_phone_number(customers: Directory, key: str, new_number: str) -> Directory:
     new_customers: Directory = {}
     for k, v in customers.items():
         new_customers[k] = v.copy()

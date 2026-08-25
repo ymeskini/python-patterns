@@ -12,6 +12,7 @@ class Browser:
         url = qr.scan()
         self.open(url)
 
+
 def main() -> None:
     print("Navigating to website on device.")
     browser = Browser()

@@ -4,17 +4,20 @@ Suppose you have the following classes, which serves as a helper for managing ac
 from google_service import GoogleCredentials, GoogleServiceProvider, GoogleStorage
 from azure_service import AzureCredentials, AzureServiceProvider, AzureStorage
 
+
 @dataclass
 class CloudService:
     auth_provider: GoogleCredentials
     service: GoogleServiceProvider
     storage_manager: GoogleStorage
 
+
 @dataclass
 class AzureCloudService:
     auth_provider: AzureCredentials
     service: AzureServiceProvider
     storage_manager: AzureStorage
+
 
 def connect_to_cloud_service(
     cloud_service: AzureCloudService | GoogleCloudService,

@@ -95,7 +95,7 @@ def main() -> None:
     print(rental)
 
     # calculate the total price
-    print(f"Total price: ${rental.total_price()/100:.2f}")
+    print(f"Total price: ${rental.total_price() / 100:.2f}")
 
 
 if __name__ == "__main__":

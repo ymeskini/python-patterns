@@ -89,7 +89,7 @@ def main() -> None:
 
     # calculate the total price
     total_price = rental.vehicle.total_price(rental.days, rental.additional_km)
-    print(f"Total price: ${total_price/100:.2f}")
+    print(f"Total price: ${total_price / 100:.2f}")
 
 
 if __name__ == "__main__":

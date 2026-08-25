@@ -3,6 +3,7 @@ a) The Abstract Factory is going to be responsible for spawning enemies. The eas
 ```python
 from abc import ABC, abstractmethod
 
+
 class EnemyFactory(ABC):
     @abstractmethod
     def spawn(self) -> Enemy:

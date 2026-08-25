@@ -21,9 +21,10 @@ def create_cloud_provider(
     )
     return ACCloud(cloud, bucket_name)
 
+
 class CloudProviderProtocol(Protocol):
-    def filter_by_query(self, bucket: str, query: str, max: int) -> dict[str, Any]:
-        ...
+    def filter_by_query(self, bucket: str, query: str, max: int) -> dict[str, Any]: ...
+
 
 @dataclass
 class ACCloud:

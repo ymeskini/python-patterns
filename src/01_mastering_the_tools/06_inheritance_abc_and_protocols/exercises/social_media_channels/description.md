@@ -12,6 +12,7 @@ SocialChannel = tuple[str, int]
 # each post has a message and the timestamp when it should be posted
 Post = tuple[str, int]
 
+
 def post_a_message(channel: SocialChannel, message: str) -> None:
     type, _ = channel
     if type == "youtube":
@@ -20,6 +21,7 @@ def post_a_message(channel: SocialChannel, message: str) -> None:
         post_to_facebook(channel, message)
     elif type == "twitter":
         post_to_twitter(channel, message)
+
 
 def process_schedule(posts: list[Post], channels: list[SocialChannel]) -> None:
     for post in posts:
