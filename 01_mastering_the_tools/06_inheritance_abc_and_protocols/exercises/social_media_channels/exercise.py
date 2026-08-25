@@ -1,58 +1,63 @@
+from dataclasses import dataclass
 from time import time
-
-# each social channel has a type
-# and the current number of followers
-SocialChannel = tuple[str, int]
-
-# each post has a message and the timestamp when it should be posted
-Post = tuple[str, int]
+from typing import Protocol
 
 
-def post_to_youtube(channel: SocialChannel, message: str) -> None:
-    type, _followers = channel
-    print(f"{type} channel: {message}")
+class SocialChannel(Protocol):
+    followers: int
+
+    def post(self, message: str) -> None: ...
 
 
-def post_to_facebook(channel: SocialChannel, message: str) -> None:
-    type, _followers = channel
-    print(f"{type} channel: {message}")
+@dataclass
+class YoutubeChannel:
+    followers: int
+
+    def post(self, message: str) -> None:
+        print(f"youtube channel: {message}")
 
 
-def post_to_twitter(channel: SocialChannel, message: str) -> None:
-    type, _followers = channel
-    print(f"{type} channel: {message}")
+@dataclass
+class FacebookChannel:
+    followers: int
+
+    def post(self, message: str) -> None:
+        print(f"facebook channel: {message}")
 
 
-def post_a_message(channel: SocialChannel, message: str) -> None:
-    type, _followers = channel
-    if type == "youtube":
-        post_to_youtube(channel, message)
-    elif type == "facebook":
-        post_to_facebook(channel, message)
-    elif type == "twitter":
-        post_to_twitter(channel, message)
+@dataclass
+class TwitterChannel:
+    followers: int
+
+    def post(self, message: str) -> None:
+        print(f"twitter channel: {message}")
+
+
+@dataclass
+class Post:
+    message: str
+    timestamp: int
 
 
 def process_schedule(posts: list[Post], channels: list[SocialChannel]) -> None:
     for post in posts:
-        message, timestamp = post
         for channel in channels:
-            if timestamp <= time():
-                post_a_message(channel, message)
+            if post.timestamp <= time():
+                channel.post(post.message)
 
 
 def main() -> None:
     posts = [
-        (
+        Post(
             "Grandma's carrot cake is available again (limited quantities!)!",
             1568123400,
         ),
-        ("Get your carrot cake now, the promotion ends today!", 1568133400),
+        Post("Get your carrot cake now, the promotion ends today!", 1568133400),
     ]
-    channels = [
-        ("youtube", 100),
-        ("facebook", 100),
-        ("twitter", 100),
+    channels: list[SocialChannel] = [
+        YoutubeChannel(100),
+        FacebookChannel(100),
+        TwitterChannel(100),
     ]
     process_schedule(posts, channels)
 

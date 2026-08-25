@@ -1,8 +1,9 @@
+from abc import ABC
 from dataclasses import dataclass
 from typing import Self
 
 @dataclass
-class Div:
+class HTMLElement(ABC):
     parent: Self | None = None
     x: int = 0
     y: int = 0
@@ -14,31 +15,27 @@ class Div:
         return (parent_x + self.x, parent_y + self.y)
 
 
-@dataclass
-class Button:
-    parent: Div
-    x: int
-    y: int
+class Div(HTMLElement):
+    pass
 
+
+class Button(HTMLElement):
     def click(self) -> None:
         print("Click!")
 
 
 @dataclass
-class Span:
-    parent: Div
-    x: int
-    y: int
-    text: str
+class Span(HTMLElement):
+    text: str = ""
 
 
 def main() -> None:
     root = Div(None, 25, 25)
     button = Button(root, 0, 0)
     sub_div = Div(root, 100, 100)
-    _span = Span(sub_div, 40, 40, "Hello")
+    span = Span(sub_div, 40, 40, "Hello")
     button.click()
-    print(sub_div.compute_screen_position())
+    print(span.compute_screen_position())
 
 
 if __name__ == "__main__":
