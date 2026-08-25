@@ -25,7 +25,7 @@ my_frozen_set = frozenset([1, 2, 3, 4, 5])
 print("Frozen set:", my_frozen_set)
 
 # Frozen sets are immutable
-# my_frozen_set.add(6)  # This will raise an AttributeError
+my_frozen_set.add(6)  # This will raise an AttributeError
 
 
 # Creating a deque

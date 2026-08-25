@@ -1,5 +1,4 @@
-from enum import IntEnum
-
+from enum import IntEnum, auto, StrEnum
 
 class HTTPStatus(IntEnum):
     OK = 200
@@ -14,6 +13,13 @@ class HTTPStatus(IntEnum):
     NOT_IMPLEMENTED = 501
 
 
+class RESTMethod(StrEnum):
+    GET = auto()
+    POST = auto()
+    PUT = auto()
+    DELETE = auto()
+
+
 for status in HTTPStatus:
     print(f"{status.name}: {status.value}")
 
@@ -26,7 +32,7 @@ print(f"value of the enum member: {HTTPStatus.NOT_FOUND.value}")
 
 
 def response_description(status: HTTPStatus) -> str:
-    if status == HTTPStatus.OK:
+    if status == HTTPStatus.zaz:
         return "Request succeeded"
     elif status == HTTPStatus.NOT_FOUND:
         return "Resource not found"

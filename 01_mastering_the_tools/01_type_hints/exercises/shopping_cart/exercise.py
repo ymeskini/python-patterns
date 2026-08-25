@@ -1,5 +1,14 @@
+from typing import Callable, TypedDict
+
+
+class Item(TypedDict):
+    id: int
+    quantity: int
+    price: float
+
+
 class ShoppingCart:
-    def __init__(self, owner):
+    def __init__(self, owner: str):
         """
         Initializes a shopping cart.
 
@@ -7,9 +16,9 @@ class ShoppingCart:
             owner (str): The owner of the shopping cart.
         """
         self.owner = owner
-        self.items = []
+        self.items: list[Item] = []
 
-    def add_item(self, id, quantity, price):
+    def add_item(self, id: int, quantity: int, price: float) -> None:
         """
         Adds an item to the shopping cart.
 
@@ -18,10 +27,9 @@ class ShoppingCart:
             quantity (int): The quantity of the item.
             price (float): The price per unit of the item.
         """
-        item = {"id": id, "quantity": quantity, "price": price}
-        self.items.append(item)
+        self.items.append({"id": id, "quantity": quantity, "price": price})
 
-    def calculate_total(self):
+    def calculate_total(self) -> float:
         """
         Calculates the total cost of items in the shopping cart.
 
@@ -31,7 +39,7 @@ class ShoppingCart:
         total_cost = sum(item["quantity"] * item["price"] for item in self.items)
         return total_cost
 
-    def filter_items(self, filter_func):
+    def filter_items(self, filter_func: Callable[[Item], bool]):
         """
         Filters the items in the shopping cart.
 

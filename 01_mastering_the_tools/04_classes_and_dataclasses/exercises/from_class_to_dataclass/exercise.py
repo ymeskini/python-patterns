@@ -1,18 +1,22 @@
+from dataclasses import dataclass, field
+
+
+@dataclass
 class A:
-    def __init__(self) -> None:
-        self._length = 0
+    _lengt: int = field(init=False, default=0)
 
 
+@dataclass
 class B:
-    def __init__(
-        self, x: int, y: str = "hello", values: list[int] | None = None
-    ) -> None:
-        self.x = x
-        self.y = y
-        self.values = [] if not values else values
+    x: int
+    y: str = "hello"
+    values: list[int] | None = field(default_factory=list[int])
 
 
+@dataclass
 class C:
-    def __init__(self, a: int = 3) -> None:
-        self.a = a
-        self.b = a + 3
+    a: int = 3
+    b: int = field(init=False)
+
+    def __post_init__(self) -> None:
+        self.b = self.a + 3

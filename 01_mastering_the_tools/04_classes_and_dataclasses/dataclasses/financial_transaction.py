@@ -21,6 +21,8 @@ def main() -> None:
         description="Payment for services rendered",
     )
 
+    transaction.amount = 3000
+
     print(transaction)
 
 
