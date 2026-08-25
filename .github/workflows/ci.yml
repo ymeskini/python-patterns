@@ -26,15 +26,7 @@ jobs:
         run: uv run pytest
 
       - name: Run mypy
-        # Each exercise is a standalone script, and many share the same
-        # basename (exercise.py, solution.py, ...) across numbered chapter
-        # folders, so checking them all in one mypy invocation fails with
-        # "Duplicate module named" — check one file at a time instead.
-        run: |
-          uv run bash -c '
-            find src -name "*.py" ! -path "*/.venv/*" ! -name "__init__.py" -print0 |
-              xargs -0 -n1 -P4 mypy --ignore-missing-imports --no-incremental
-          '
+        run: uv run mypy src
 
       - name: Run ruff check
         run: uv run ruff check src
