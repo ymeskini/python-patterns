@@ -1,9 +1,4 @@
-from side_effects import update_phone_number
-
-CUSTOMERS = {
-    "Alice": {"phone_number": "2341", "credit_card": "2341"},
-    "Bob": {"phone_number": "9102", "credit_card": "5342"},
-}
+from side_effects import CUSTOMERS, update_phone_number
 
 
 def test_update_phone_number():
