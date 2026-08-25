@@ -5,7 +5,7 @@ CUSTOMERS = {
 
 
 def update_phone_number(key: str, new_number: str) -> None:
-    CUSTOMERS[key]["phone_number"] = new_number
+    CUSTOMERS.setdefault(key, {})["phone_number"] = new_number.strip()
 
 
 def main() -> None:
