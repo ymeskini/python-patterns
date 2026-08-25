@@ -1,4 +1,4 @@
 try:
-    something  # type: ignore[name-defined]  # bare except below hides even this
-except:
+    something  # type: ignore[name-defined]  # noqa: F821  # bare except below hides even this
+except:  # noqa: E722
     pass

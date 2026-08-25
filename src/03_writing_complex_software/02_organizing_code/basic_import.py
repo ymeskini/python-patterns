@@ -1,2 +1,2 @@
-import module
-import package_1
+import module  # noqa: F401
+import package_1  # noqa: F401
